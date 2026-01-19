@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="test.xsl"?>
+
+<clients xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="client.xsd">
+	<client id="234" type="ets">
+		<rs>Mr people</rs>
+		<destinataire>Pierre Pol</destinataire>
+		<adr1>rue george</adr1>
+		<adr2/>
+		<cp>91234</cp>
+		<ville>Ville la ville</ville>
+	</client>
+	<client type="ets" id="654"><rs>Boby &amp; Co</rs>
+		<destinataire>Boby</destinataire>
+		<adr1></adr1>
+		<adr2></adr2>
+		<cp></cp>
+		<ville></ville>
+	</client>
+	<client id="123" type="particulier">
+		<destinataire>jean rostremer</destinataire>
+		<adr1>chemin de l'homme dormant</adr1>
+		<adr2/>
+		<cp>54230</cp>
+		<ville>Nancy Lest</ville>
+	</client>
+	<client id="132" type="particulier">
+		<destinataire>Richard rostremer</destinataire>
+		<adr1>rue de la gare</adr1>
+		<adr2/>
+		<cp>61210</cp>
+		<ville>Sommevillet</ville>
+	</client>
+</clients>
