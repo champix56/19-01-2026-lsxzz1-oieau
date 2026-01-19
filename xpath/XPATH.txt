@@ -1,0 +1,28 @@
+les requettes simples factures
+	-chemin complet simple
+		-racines: /
+		-numfacture : /factures/facture/@numfacture 
+		-destinataire client: /factures/facture/client/destinataire
+		-ligne de facturation: /factures/facture/lignes/ligne
+		-adresseets, cp, ville: /factures/@*
+
+	-chemin complexe
+		-en profondeur //
+		 +tous les clients: //facture//clients
+		-par position : /*[position()=?]
+		 +3 eme facture: //facture[3]
+		 +client de la 1 er facture : //facture[1]/client
+		 +2eme ligne derniere facture: //facture[last()]
+		 +Afficher une facture sur 2: //facture[position() mod 2=0]
+		 +afficher une ligne sur 2 de la 3eme facture: //facture[3]//ligne[position() mod 2 = 0 ]
+		 +facture ayant pas de client
+		 +numeros de factures du clientid 123: //facture[@idclient = 123]/@numfacture
+		 +numero de facture contenant une ligne de REF-XXX & la ligne concerné:
+		 +ligne de prix superieur a 6.00 si le client est 123 et numero de facture concerner
+
+
+	-fonctions
+		-concattener les 2 lignes dadresse + cp +ville des facture ou le client est present
+		-string-join meme que prec avec ";"
+		-facture de clien dans le 75
+		-
