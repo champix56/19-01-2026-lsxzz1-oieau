@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!--DOCTYPE xsl:stylesheet SYSTEM "http://localhost:3000/entities.dtd"-->
+<!DOCTYPE xsl:stylesheet [
+	<!ENTITY nbsp "&#xA0;">
+	<!ENTITY euro "&#8364;">
+]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" encoding="UTF-8" indent="yes"/>
+	<xsl:param name="devise" select="'&euro;'"/>
 	<xsl:template match="/">
 		<html>
 			<head>
 				<title>Edition en date du <xsl:value-of select="/factures/@dateeditionXML"/></title>
 				<style type="text/css">
+					@media print{
+						.facture{
+							height:287cm;
+							width:20cm;
+							page-break-before:always;
+						}
+					}
 					.facture{
-						height:287cm;
-						width:20cm;
-						page-break-before:always;
+						
 					}
 					.adresse{
 						width:4cm;
@@ -46,49 +57,98 @@
 			<body>
 				<h1>Liste des factures en date du <xsl:value-of select="/factures/@dateeditionXML"/></h1>
 				<ul>
-					<li>
-						<a href="#F">factures N° XXXX du XXXX-XX-XX</a>
-					</li>
+					<xsl:apply-templates select="//facture" mode="liste"/>
 				</ul>
 				<hr/>
-				<div class="facture" id="F">
-					<div class="emeteur adresse">emeteur</div>
-					<div class="client adresse">client</div>
-					<div class="numerofacture">Facture N° XX<br/><i>en date du :XXXX-XX-XX</i></div>
-					<table border="1" cellpadding="0" cellspacing="0">
-						<thead>
-							<tr>
-								<th>REF</th>
-								<th>Designation</th>
-								<th>euro/unit</th>
-								<th>quantité</th>
-								<th>sous-total</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>REF</td>
-								<td>Designation</td>
-								<td>euro/unit</td>
-								<td>quantité</td>
-								<td>sous-total</td>
-							</tr>
-							<tr>
-								<td class="right" colspan="4"> Total HT :</td>
-								<td>XX.XX Euro</td>
-							</tr>
-							<tr>
-								<td class="right" colspan="4"> Total TVA :</td>
-								<td>XX.XX Euro</td>
-							</tr>
-							<tr>
-								<td class="right" colspan="4"> Total TTC :</td>
-								<td>XX.XX Euro</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<xsl:apply-templates select="//facture"/>
 			</body>
 		</html>
+	</xsl:template>
+	<xsl:template match="facture" mode="liste">
+		<li>
+			<a href="#F{@numfacture}">factures N° <xsl:value-of select="@numfacture"/> du XXXX-XX-XX</a>
+		</li>
+	</xsl:template>
+	<xsl:template match="facture">
+		<div class="facture" id="F{@numfacture}">
+			<div class="emeteur adresse">emeteur</div>
+			<!--
+				zone de la div client 
+			-->
+			<xsl:apply-templates select="@numfacture"/>
+			<xsl:apply-templates select="lignes"/>
+		</div>
+	</xsl:template>
+	<xsl:template match="client">
+		<div class="client adresse">client</div>
+	</xsl:template>
+	<xsl:template match="@numfacture">
+		<div class="numerofacture">Facture N° XX<br/><i>en date du :XXXX-XX-XX</i></div>
+	</xsl:template>
+	<xsl:template match="lignes">
+		<table border="1" cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th>REF</th>
+					<th>Designation</th>
+					<th><xsl:value-of select="$devise"/>/unit</th>
+					<th>quantité</th>
+					<th>sous-total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<xsl:apply-templates select="ligne"/>
+				<xsl:call-template name="totaux"/>
+				<tr>
+					<th colspan="5" style="text-align:center;font-weight:900;">Totaux de tout le fichier</th>
+				</tr>
+				<xsl:call-template name="totaux">
+					<xsl:with-param name="nodeset" select="/factures"/>
+				</xsl:call-template>
+			</tbody>
+		</table>
+	</xsl:template>
+	<xsl:template match="ligne">
+		<tr>
+			<xsl:apply-templates select="*"/>
+		</tr>
+	</xsl:template>
+	<xsl:template match="ligne/stotligne | ligne/phtByUnit" priority="1">
+		<td>
+			<xsl:value-of select="format-number(.,'0,00 &euro;', 'curr_eur')"/>
+		</td>
+	</xsl:template>
+	<xsl:template match="ligne/*">
+		<td>
+			<xsl:value-of select="."/>
+		</td>
+	</xsl:template>
+	
+	<xsl:template match="surface" priority="1"/>
+	<!--
+	- format decimal pour l'internationnalisation de la devise en currency eur
+	-->
+	<xsl:decimal-format name="curr_eur" grouping-separator=" " decimal-separator=","/>
+	<xsl:template name="totaux">
+		<xsl:param name="nodeset" select="."/>
+		<xsl:variable name="totalht" 
+				select="format-number(sum($nodeset//stotligne),'0.00')"/>
+		<xsl:variable name="totaltva" 
+				select="format-number($totalht*0.20,'0.00')"/>
+		<tr>
+			<td>&#xA0;</td>			
+			<td>&#160;</td>
+			<td>&nbsp;</td>
+			<td class="right" colspan="1"> Total HT :</td>
+			<td><xsl:value-of select="format-number($totalht,'0,00&euro;','curr_eur')"/></td>
+		</tr>
+		<tr>
+			<td class="right" colspan="4"> Total TVA :</td>
+			<td><xsl:value-of select="format-number($totaltva,'0,00&euro;','curr_eur')"/></td>
+		</tr>
+		<tr>
+			<td class="right" colspan="4"> Total TTC :</td>
+			<td><xsl:value-of select="format-number($totalht+$totaltva,'0,00&euro;','curr_eur')"/></td>
+		</tr>
 	</xsl:template>
 </xsl:stylesheet>

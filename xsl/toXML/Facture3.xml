@@ -11,14 +11,14 @@
 		<lignes>
 			<ligne>
 				<ref>REF-2134</ref>
-				<designation>Lavage SOL </designation>
+				<designation>Lavage Î© SOL </designation>
 				<phtByUnit>5.95</phtByUnit>
 				<nbUnit typeUnit="HOUR">1.5</nbUnit>
 				<stotligne>8.925</stotligne>
 			</ligne>
 			<ligne>
 				<ref>REF-2135</ref>
-				<designation>Peinture SOL forfait &lt;20m² </designation>
+				<designation>Peinture SOL forfait &lt;20mï¿½ </designation>
 				<phtByUnit>8.95</phtByUnit>
 				<nbUnit typeUnit="UNIT">1.5</nbUnit>
 				<stotligne>13.425</stotligne>
@@ -41,6 +41,13 @@
 				<phtByUnit>9.95</phtByUnit>
 				<nbUnit typeUnit="HOURBYMETER2">0.5</nbUnit>
 				<stotligne>74.625</stotligne>
+			</ligne>
+			<ligne>
+				<ref>REF-2134</ref>
+				<designation>Lavage SOL </designation>
+				<phtByUnit>5.95</phtByUnit>
+				<nbUnit typeUnit="HOUR">1.5</nbUnit>
+				<stotligne>8.925</stotligne>
 			</ligne>
 		</lignes>
 	</facture>
@@ -87,7 +94,7 @@
 			</ligne>
 			<ligne>
 				<ref>REF-2135-2</ref>
-				<designation>Peinture SOL forfait &gt;20m² </designation>
+				<designation>Peinture SOL forfait &gt;20mï¿½ </designation>
 				<phtByUnit>6.95</phtByUnit>
 				<nbUnit typeUnit="UNIT">2.5</nbUnit>
 				<stotligne>17.375</stotligne>
