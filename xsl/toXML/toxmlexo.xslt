@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+	<xsl:variable name="chemin" select="'clients.xml'"/>
+		
 	<xsl:template match="/">
 		<compta>
 			<xsl:apply-templates select="//facture"/>
@@ -9,6 +11,13 @@
 	<xsl:decimal-format name="euro" decimal-separator="," grouping-separator=" " NaN="NC"/>
 	<xsl:template match="facture">
 		<facture numfacture="{@numfacture}">
+			<xsl:variable name="idc" select="@idclient"/>
+			<xsl:variable name="docClient" select="document($chemin)/clients/client[@id=$idc]"/>
+			<!--<xsl:variable name="docClient" select="document($chemin)/clients/client[@id=current()/@idclient]"/>-->
+		
+		
+		<xsl:copy-of select="$docClient"/>
+		
 			<xsl:variable name="ht" select="format-number(sum(.//stotligne),'0.00')"/>
 			<xsl:variable name="tva" select="format-number($ht*0.20,'0.00')"/>
 			<xsl:variable name="t" select="format-number('56846845,099','# ##0,00€','euro')"/>
