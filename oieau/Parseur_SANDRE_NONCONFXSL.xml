@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LABO_DEST
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  >
+    <Scenario>
+        <CodeScenario>LABO_DEST</CodeScenario>
+        <VersionScenario>1.1</VersionScenario>
+        <NomScenario>Echanges informatisés entre laboratoires et commanditaires</NomScenario>
+        <DateCreationFichier>2025-05-07</DateCreationFichier>
+        <ReferenceFichierEnvoi>RA_OFFICE INTERNATIONALE DE L'EAUQ_REMI_DDPP29_250507083913001.xml</ReferenceFichierEnvoi>
+        <Emetteur>
+            <CdIntervenant schemeAgencyID="SIRET">31490172900025</CdIntervenant>
+            <NomIntervenant>Example</NomIntervenant>
+        </Emetteur>
+        <Destinataire>
+            <CdIntervenant schemeAgencyID="SIRET">13000933500022</CdIntervenant>
+            <NomIntervenant>Example</NomIntervenant>
+        </Destinataire>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="PAR" version="2024-09-06"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="MET" version="2024-09-06"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="FAN" version="2024-09-06"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="SUP" version="2024-09-06"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="URF" version="2024-09-06"/>
+    </Scenario>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">31490172900025</CdIntervenant>
+        <NomIntervenant>OFFICE INTERNATIONALE DE L'EAU</NomIntervenant>
+    </Intervenant>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">13000933500022</CdIntervenant>
+        <NomIntervenant>DDPP 29 - REMI - REPHYTOX</NomIntervenant>
+    </Intervenant>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">53919851500022</CdIntervenant>
+        <NomIntervenant>COMITE DEPARTEMENTAL DES PECHES MARITIMES ET DES ELEVAGES MARINS DU FINISTERE (CDPMEM29)
+        </NomIntervenant>
+    </Intervenant>
+    <StationPrelevement>
+        <CdStationPrelevement schemeAgencyID="11">120</CdStationPrelevement>
+        <LbStationPrelevement>120</LbStationPrelevement>
+        <LocalPrelevement>
+            <CdLocalPrelevement schemeAgencyID="4">43115002</CdLocalPrelevement>
+            <LbLocalPrelevement>120-P-002 - Palu</LbLocalPrelevement>
+        </LocalPrelevement>
+    </StationPrelevement>
+    <Demande>
+        <Commanditaire>
+            <CdIntervenant schemeAgencyID="SIRET">13000933500022</CdIntervenant>
+        </Commanditaire>
+        <Prestataire>
+            <CdIntervenant schemeAgencyID="SIRET">31490172900025</CdIntervenant>
+        </Prestataire>
+        <TypeDemande>2</TypeDemande>
+        <ContexteCodification>1</ContexteCodification>
+        <Prelevement>
+            <RealisePrel>1</RealisePrel>
+            <DatePrel>2025-05-11</DatePrel>
+            <HeurePrel>12:00:00</HeurePrel>
+            <AccredPrel>1</AccredPrel>
+            <AgrePrel>0</AgrePrel>
+            <StationPrelevement>
+                <CdStationPrelevement schemeAgencyID="11">120</CdStationPrelevement>
+            </StationPrelevement>
+            <LocalPrelevement>
+                <CdLocalPrelevement schemeAgencyID="4">43115002</CdLocalPrelevement>
+            </LocalPrelevement>
+            <CoordXPrel>-1.1214398193</CoordXPrel>
+            <CoordYPrel>45.999978456</CoordYPrel>
+            <ProjectPrel>31</ProjectPrel>
+            <Support>
+                <CdSupport>106</CdSupport>
+                <LbSupport>Coquille St Jacques</LbSupport>
+            </Support>
+            <Preleveur>
+                <CdIntervenant schemeAgencyID="SIRET">53919851500022</CdIntervenant>
+            </Preleveur>
+            <Echantillon>
+                <RefEchantillonCommanditaire>COQUILLES ST JACQUES</RefEchantillonCommanditaire>
+                <RefEchantillonLabo>25042804931503/1/1</RefEchantillonLabo>
+                <AcceptabiliteEchant>1</AcceptabiliteEchant>
+                <DateReceptionEchant>2025-03-12</DateReceptionEchant>
+                <HeureReceptionEchant>13:51:00</HeureReceptionEchant>
+                <Laboratoire>
+                    <CdIntervenant schemeAgencyID="SIRET">31490172900025</CdIntervenant>
+                </Laboratoire>
+                <CompletEchant>1</CompletEchant>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>7289</CdParametre>
+                        <NomParametre>45-hydroxy-homo-Yessotoxine</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>158</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>7290</CdParametre>
+                        <NomParametre>45-hydroxy-Yessotoxine</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>158</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>0.25</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>3091</CdParametre>
+                        <NomParametre>Acide Okadaïque et Dinophysistoxines (AO DTXs)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>651</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8608</CdParametre>
+                        <NomParametre>Acide Okadaïque libre</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8607</CdParametre>
+                        <NomParametre>Acide Okadaïque total</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>2</RsAna>
+                    <RqAna>2</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>3092</CdParametre>
+                        <NomParametre>Toxines amnésiantes (ASP)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1214</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>654</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>7270</CdParametre>
+                        <NomParametre>Azaspiracide 1</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>7271</CdParametre>
+                        <NomParametre>Azaspiracide 2</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>7272</CdParametre>
+                        <NomParametre>Azaspiracide 3</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>20</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8682</CdParametre>
+                        <NomParametre>Somme des AZAs réglementées, avec TEFs</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>652</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8606</CdParametre>
+                        <NomParametre>Dinophysistoxine-1 libre</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8605</CdParametre>
+                        <NomParametre>Dinophysistoxine-1 total</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8602</CdParametre>
+                        <NomParametre>Dinophysistoxine-2 libre</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>8603</CdParametre>
+                        <NomParametre>Dinophysistoxine-2 total</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>129</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>7288</CdParametre>
+                        <NomParametre>Homo-Yessotoxine</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>158</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>2</RsAna>
+                    <RqAna>10</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>3085</CdParametre>
+                        <NomParametre>Toxines paralysantes (PSP)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1531</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>637</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+                <Analyse>
+                    <RefLaboAna>25042804931503/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2025-03-12</DateAna>
+                    <HeureAna>13:45:00</HeureAna>
+                    <RsAna>12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <InsituAna>2</InsituAna>
+                    <CommentairesAna>Commentaire exemple</CommentairesAna>
+                    <Parametre>
+                        <CdParametre>3098</CdParametre>
+                        <NomParametre>Yessotoxines (YTXs)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>380</CdFractionAnalysee>
+                        <LbFractionAnalysee>Example</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>573</CdMethode>
+                        <NomMethode>Example</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>158</CdUniteReference>
+                        <LbUniteReference>Example</LbUniteReference>
+                    </UniteReference>
+                </Analyse>
+            </Echantillon>
+            <Commemoratif>
+                <CdCommemoratif>84</CdCommemoratif>
+                <LbCommemoratif>Engin de prélèvement</LbCommemoratif>
+                <ValCommemoratif>115</ValCommemoratif>
+            </Commemoratif>
+            <Commemoratif>
+                <CdCommemoratif>123</CdCommemoratif>
+                <LbCommemoratif>Dispositif de collecte</LbCommemoratif>
+                <ValCommemoratif>0000000110</ValCommemoratif>
+            </Commemoratif>
+        </Prelevement>
+    </Demande>
+</LABO_DEST>

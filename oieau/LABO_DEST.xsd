@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1" targetNamespace="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:group name="G_intervenant_data">
+		<xs:sequence>
+			<xs:element name="RueIntervenant" type="xs:string"/>
+			<xs:element name="VilleIntervenant" type="xs:string"/>
+			<xs:element name="CPIntervenant" type="ST_CP"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:simpleType name="ST_SIRET">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1-9]\d{13}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_CP">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ST_SANDRE_SchemeAgencyID">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="\d{0,14}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="CdIntervenant">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="ST_SIRET">
+					<xs:attribute name="schemeAgencyID">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="SANDRE"/>
+								<xs:enumeration value="SIRET"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LABO_DEST">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Scenario"/>
+				<xs:element name="Intervenant" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="CdIntervenant"/>
+							<xs:element name="NomIntervenant" type="xs:string"/>
+							<xs:group ref="G_intervenant_data" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="StationPrelevement"/>
+				<xs:element name="Demande">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Commanditaire">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="CdIntervenant"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Prestataire"/>
+							<xs:element name="TypeDemande">
+								<xs:simpleType>
+									<xs:annotation>
+										<xs:documentation>Type de demande de 1 a 3</xs:documentation>
+									</xs:annotation>
+									<xs:restriction base="xs:integer">
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+										<xs:enumeration value="3"/>
+										<!---->
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ContexteCodification">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="1"/>
+										<xs:maxInclusive value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Prelevement" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

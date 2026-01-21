@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LABO_DEST xmlns="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1 http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1/sandre_sc_labo_dest.xsd http://www.w3.org/1999/xlink http://xml.sandre.eaufrance.fr/xlink/1999/xlink.xsd http://www.w3.org/XML/1998/namespace http://xml.sandre.eaufrance.fr/w3c/xml/2001/xml.xsd">
+    <Scenario>
+        <CodeScenario>LABO_DEST</CodeScenario>
+        <VersionScenario>1.1</VersionScenario>
+        <NomScenario>Echanges informatisés entre Laboratoires et Commanditaires</NomScenario>
+        <DateCreationFichier>2026-01-20</DateCreationFichier>
+        <ReferenceFichierEnvoi>DIGESTAT_20251217_DIGESTAT_BRUT_POINT_1_CBCHT_LAB25-36397-1.xml</ReferenceFichierEnvoi>
+        <Emetteur>
+            <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+        </Emetteur>
+        <Destinataire>
+            <CdIntervenant schemeAgencyID="SIRET">80328746500014</CdIntervenant>
+        </Destinataire>
+    </Scenario>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+        <NomIntervenant>SADEF Pôle d`Aspach</NomIntervenant>
+        <RueIntervenant>Rue de la Station</RueIntervenant>
+        <VilleIntervenant>ASPACH LE BAS</VilleIntervenant>
+        <CPIntervenant>68700</CPIntervenant>
+    </Intervenant>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">80328746500014</CdIntervenant>
+        <NomIntervenant>ENGIE BIOZ CBCHT</NomIntervenant>
+    </Intervenant>
+    <StationPrelevement>
+        <CdStationPrelevement schemeAgencyID="11">CENTRALE BIOGAZ DE CHAUMONT</CdStationPrelevement>
+        <LbStationPrelevement>CENTRALE BIOGAZ DE CHAUMONT</LbStationPrelevement>
+    </StationPrelevement>
+    <Demande>
+        <Commanditaire>
+            <CdIntervenant schemeAgencyID="SIRET">80328746500014</CdIntervenant>
+        </Commanditaire>
+        <Prestataire>
+            <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+        </Prestataire>
+        <TypeDemande>2</TypeDemande>
+        <ContexteCodification>2</ContexteCodification>
+        <Prelevement>
+            <RealisePrel>1</RealisePrel>
+            <DatePrel>2025-12-17</DatePrel>
+            <StationPrelevement>
+                <CdStationPrelevement schemeAgencyID="11">CENTRALE BIOGAZ DE CHAUMONT</CdStationPrelevement>
+            </StationPrelevement>
+            <Support>
+                <CdSupport schemeAgencyID="SANDRE">52</CdSupport>
+                <LbSupport>Déchet industriel</LbSupport>
+            </Support>
+            <Preleveur>
+                <CdIntervenant schemeAgencyID="SIRET">80328746500014</CdIntervenant>
+            </Preleveur>
+            <Echantillon>
+                <RefEchantillonCommanditaire>20251217-DIGESTAT_BRUT-POINT 1_CBCHT</RefEchantillonCommanditaire>
+                <RefEchantillonLabo>D-22086-25</RefEchantillonLabo>
+                <DateReceptionEchant>2025-12-29</DateReceptionEchant>
+                <Laboratoire>
+                    <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                </Laboratoire>
+                <CompletEchant>1</CompletEchant>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>2.83</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>5946</CdParametre>
+                        <NomParametre>Anhydride phosphorique</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>17.1</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>5946</CdParametre>
+                        <NomParametre>Anhydride phosphorique</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>9.01</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1551</CdParametre>
+                        <NomParametre>Azote global (N.GL.)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>54.4</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1551</CdParametre>
+                        <NomParametre>Azote global (N.GL.)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-08</DateAna>
+                    <RsAna>5</RsAna>
+                    <RqAna>10</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1339</CdParametre>
+                        <NomParametre>Nitrites</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>159</CdUniteReference>
+                        <LbUniteReference>milligramme par kilogramme de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-08</DateAna>
+                    <RsAna>5</RsAna>
+                    <RqAna>10</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1339</CdParametre>
+                        <NomParametre>Nitrites</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>160</CdUniteReference>
+                        <LbUniteReference>milligramme par kilogramme de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-07</DateAna>
+                    <RsAna>2.12</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1335</CdParametre>
+                        <NomParametre>Ammonium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>764</CdMethode>
+                        <NomMethode>Qualité de l'eau - Dosage de l'ammonium - Mesure spectrophotométrique basée sur la réaction de Berthelot. Mesure en flux. (2007)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-07</DateAna>
+                    <RsAna>12.8</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1335</CdParametre>
+                        <NomParametre>Ammonium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>764</CdMethode>
+                        <NomMethode>Qualité de l'eau - Dosage de l'ammonium - Mesure spectrophotométrique basée sur la réaction de Berthelot. Mesure en flux. (2007)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-07</DateAna>
+                    <RsAna>0.01</RsAna>
+                    <RqAna>10</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1340</CdParametre>
+                        <NomParametre>Nitrates</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>755</CdMethode>
+                        <NomMethode>Qualité de l'eau - Dosage des nitrates et nitrites - Mesure spectrophotométrique basée sur réduction au Cadmium et réaction de Griess. Mesure en flux. (2007)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-07</DateAna>
+                    <RsAna>0.01</RsAna>
+                    <RqAna>10</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1340</CdParametre>
+                        <NomParametre>Nitrates</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>755</CdMethode>
+                        <NomMethode>Qualité de l'eau - Dosage des nitrates et nitrites - Mesure spectrophotométrique basée sur réduction au Cadmium et réaction de Griess. Mesure en flux. (2007)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-07</DateAna>
+                    <RsAna>9</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1319</CdParametre>
+                        <NomParametre>Azote Kjeldahl</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-07</DateAna>
+                    <RsAna>54.4</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1319</CdParametre>
+                        <NomParametre>Azote Kjeldahl</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>6.8</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>2833</CdParametre>
+                        <NomParametre>Rapport Carbone sur Azote</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>X</CdUniteReference>
+                        <LbUniteReference>Sans objet</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>56.8</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>5539</CdParametre>
+                        <NomParametre>Matière Sèche Minérale  (M.S.M)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>343</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>5539</CdParametre>
+                        <NomParametre>Matière Sèche Minérale  (M.S.M)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>3</CdMethode>
+                        <NomMethode>Méthode spécifique</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-15</DateAna>
+                    <RsAna>61.3</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1841</CdParametre>
+                        <NomParametre>Carbone Organique</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>615</CdMethode>
+                        <NomMethode>Qualité du sol - Dosage du carbone organique et du carbone total après combustion sèche (analyse élémentaire) (NF ISO 10694 Juin 1995 / X31-409)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-15</DateAna>
+                    <RsAna>370</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1841</CdParametre>
+                        <NomParametre>Carbone Organique</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>615</CdMethode>
+                        <NomMethode>Qualité du sol - Dosage du carbone organique et du carbone total après combustion sèche (analyse élémentaire) (NF ISO 10694 Juin 1995 / X31-409)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>109</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1434</CdParametre>
+                        <NomParametre>Matières Organiques Volatiles (M.O.V.)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>646</CdMethode>
+                        <NomMethode>Amendements du sol et supports de culture - Détermination de la matière organique et des cendres (NF EN 13039 Février 2000)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>657</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1434</CdParametre>
+                        <NomParametre>Matières Organiques Volatiles (M.O.V.)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>646</CdMethode>
+                        <NomMethode>Amendements du sol et supports de culture - Détermination de la matière organique et des cendres (NF EN 13039 Février 2000)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-06</DateAna>
+                    <RsAna>8.4</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1302</CdParametre>
+                        <NomParametre>Potentiel en Hydrogène (pH)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>654</CdMethode>
+                        <NomMethode>Amendements du sol et supports de culture - Détermination du pH (NF EN 13037 Février 2000)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>264</CdUniteReference>
+                        <LbUniteReference>unité pH</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>16.6</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1799</CdParametre>
+                        <NomParametre>Matière sèche à 105°C</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1235</CdMethode>
+                        <NomMethode>Amendements organiques et supports de culture - Préparation des échantillons pour les essais physiques et chimiques, détermination de la teneur en matière sèche, du taux d'humidité et de la masse volumique compactée en laboratoire</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>243</CdUniteReference>
+                        <LbUniteReference>pourcentage</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>0.83</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>7040</CdParametre>
+                        <NomParametre>Oxyde de magnesium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>5.02</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>7040</CdParametre>
+                        <NomParametre>Oxyde de magnesium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>5.95</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>7037</CdParametre>
+                        <NomParametre>Oxyde de calcium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>35.9</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>7037</CdParametre>
+                        <NomParametre>Oxyde de calcium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>6.92</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>7039</CdParametre>
+                        <NomParametre>Oxyde de potassium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>114</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière brute du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>76</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière brute</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+                <Analyse>
+                    <DateAna>2026-01-19</DateAna>
+                    <RsAna>41.8</RsAna>
+                    <RqAna>1</RqAna>
+                    <AccreAna>2</AccreAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>7039</CdParametre>
+                        <NomParametre>Oxyde de potassium</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>115</CdFractionAnalysee>
+                        <LbFractionAnalysee>Matière sèche du produit d'épandage</LbFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1437</CdMethode>
+                        <NomMethode>Boues, biodéchets traités et sols - Digestion des éléments solubles dans l'eau régale - Boues, bio-déchets traités et sols (NF EN 16174 Septembre 2012 / X31-043)</NomMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>77</CdUniteReference>
+                        <LbUniteReference>kilogramme par tonne de matière sèche</LbUniteReference>
+                    </UniteReference>
+                    <Laboratoire>
+                        <CdIntervenant schemeAgencyID="SIRET">38562024000023</CdIntervenant>
+                    </Laboratoire>
+                </Analyse>
+            </Echantillon>
+        </Prelevement>
+    </Demande>
+</LABO_DEST>

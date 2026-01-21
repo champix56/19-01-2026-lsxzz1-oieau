@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LABO_DEST xmlns="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1 LABO_DEST.xsd http://www.w3.org/1999/xlink http://xml.sandre.eaufrance.fr/xlink/1999/xlink.xsd http://www.w3.org/XML/1998/namespace http://xml.sandre.eaufrance.fr/w3c/xml/2001/xml.xsd">
+    <Scenario>
+        <CodeScenario>LABO_DEST</CodeScenario>
+        <VersionScenario>1.1</VersionScenario>
+        <NomScenario>Echanges informatisés entre laboratoires et commanditaires</NomScenario>
+        <DateCreationFichier>2026-01-21</DateCreationFichier>
+        <ReferenceFichierEnvoi>RA_LABOCEAQ_REMI_DDPP29_260121102236001.xml</ReferenceFichierEnvoi>
+        <Emetteur>
+            <CdIntervenant schemeAgencyID="SIRET">13000208200019</CdIntervenant>
+        </Emetteur>
+        <Destinataire>
+            <CdIntervenant schemeAgencyID="SIRET">13000933500022</CdIntervenant>
+        </Destinataire>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="PAR" version="2025-12-19"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="MET" version="2025-12-19"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="FAN" version="2025-12-19"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="SUP" version="2025-12-19"/>
+        <Referentiel schemeAgencyID="SANDRE" schemeID="URF" version="2025-12-19"/>
+    </Scenario>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">13000208200019</CdIntervenant>
+        <NomIntervenant>LABOCEA</NomIntervenant>
+    </Intervenant>
+    <Intervenant>
+        <CdIntervenant schemeAgencyID="SIRET">13000933500022</CdIntervenant>
+        <NomIntervenant>DDPP 29 -  REMI - REPHYTOX</NomIntervenant>
+        <RueIntervenant>2 RUE KERIVOAL</RueIntervenant>
+        <VilleIntervenant>QUIMPER</VilleIntervenant>
+        <CPIntervenant>29000</CPIntervenant>
+    </Intervenant>
+    <Intervenant>
+        <CdIntervenant  schemeAgencyID="SIRET">53919851500022</CdIntervenant>
+        <NomIntervenant>COMITE DEPARTEMENTAL DES PECHES MARITIMES ET DES ELEVAGES MARINS DU FINISTERE (CDPMEM29)</NomIntervenant>
+        <RueIntervenant>22 AVENUE DU ROUILLEN</RueIntervenant>
+        <VilleIntervenant>ERGUE GABERIC</VilleIntervenant>
+        <CPIntervenant>29500</CPIntervenant>
+    </Intervenant>
+    <StationPrelevement>
+        <CdStationPrelevement schemeAgencyID="11">29.04.010</CdStationPrelevement>
+        <LbStationPrelevement>RADE DE BREST - SUD - PRAIRES [4-60014681]</LbStationPrelevement>
+        <LocalPrelevement>
+            <CdLocalPrelevement schemeAgencyID="4">60014681</CdLocalPrelevement>
+            <LbLocalPrelevement>RADE DE BREST - SUD - PRAIRES</LbLocalPrelevement>
+        </LocalPrelevement>
+    </StationPrelevement>
+    <Demande>
+        <Commanditaire>
+            <CdIntervenant schemeAgencyID="SIRET">13000933500022</CdIntervenant>
+        </Commanditaire>
+        <Prestataire>
+            <CdIntervenant schemeAgencyID="SIRET">13000208200019</CdIntervenant>
+        </Prestataire>
+        <TypeDemande>2</TypeDemande>
+        <ContexteCodification>2</ContexteCodification>
+        <Prelevement>
+            <RealisePrel>1</RealisePrel>
+            <DatePrel>2026-01-12</DatePrel>
+            <HeurePrel>10:00:00</HeurePrel>
+            <FinalitePrel>25</FinalitePrel>
+            <AccredPrel>1</AccredPrel>
+            <AgrePrel>0</AgrePrel>
+            <StationPrelevement>
+                <CdStationPrelevement schemeAgencyID="11">29.04.010</CdStationPrelevement>
+            </StationPrelevement>
+            <LocalPrelevement>
+                <CdLocalPrelevement schemeAgencyID="4">60014681</CdLocalPrelevement>
+            </LocalPrelevement>
+            <Support>
+                <CdSupport>79</CdSupport>
+            </Support>
+            <MethodePrel>
+                <CdMethode>0</CdMethode>
+            </MethodePrel>
+            <Preleveur>
+                <CdIntervenant schemeAgencyID="SIRET">53919851500022</CdIntervenant>
+            </Preleveur>
+            <Echantillon>
+                <RefEchantillonCommanditaire>Rade sud</RefEchantillonCommanditaire>
+                <RefEchantillonLabo>26011200311402/1/1</RefEchantillonLabo>
+                <AcceptabiliteEchant>1</AcceptabiliteEchant>
+                <DateReceptionEchant>2026-01-12</DateReceptionEchant>
+                <HeureReceptionEchant>14:11:00</HeureReceptionEchant>
+                <Laboratoire>
+                    <CdIntervenant schemeAgencyID="SIRET">13000208200019</CdIntervenant>
+                </Laboratoire>
+                <CompletEchant>1</CompletEchant>
+                <Analyse>
+                    <RefLaboAna>26011200311402/1/1/01DIECOCOQ5TD/EC</RefLaboAna>
+                    <DateAna>2026-01-13</DateAna>
+                    <HeureAna>08:26:00</HeureAna>
+                    <RsAna>78</RsAna>
+                    <RqAna>1</RqAna>
+                    <LQAna>18</LQAna>
+                    <AccreAna>1</AccreAna>
+                    <AgreAna>0</AgreAna>
+                    <RefAna>78 NPP/100g</RefAna>
+                    <InsituAna>2</InsituAna>
+                    <Parametre>
+                        <CdParametre>1449</CdParametre>
+                        <NomParametre>Escherichia coli (E. coli)</NomParametre>
+                    </Parametre>
+                    <FractionAnalysee>
+                        <CdFractionAnalysee>254</CdFractionAnalysee>
+                    </FractionAnalysee>
+                    <Methode>
+                        <CdMethode>1241</CdMethode>
+                    </Methode>
+                    <UniteReference>
+                        <CdUniteReference>640</CdUniteReference>
+                    </UniteReference>
+                </Analyse>
+            </Echantillon>
+            <Commemoratif>
+                <CdCommemoratif>84</CdCommemoratif>
+                <ValCommemoratif>115</ValCommemoratif>
+            </Commemoratif>
+        </Prelevement>
+    </Demande>
+</LABO_DEST>

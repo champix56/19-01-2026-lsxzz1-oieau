@@ -1,0 +1,2279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 sp1 (x64) (http://www.altova.com) by moreno (OIEAU) -->
+<!--correction apportée au type de CdLocalPrelevement -->
+<xsd:schema xmlns:sa_lab="http://xml.sandre.eaufrance.fr/lab/1.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sa_par="http://xml.sandre.eaufrance.fr/par/1" xmlns:sa_com="http://xml.sandre.eaufrance.fr/com/1" xmlns:cct="http://xml.sandre.eaufrance.fr/Composants/5" xmlns:sa_int="http://xml.sandre.eaufrance.fr/int/2" targetNamespace="http://xml.sandre.eaufrance.fr/lab/1.1" elementFormDefault="qualified">
+	<xsd:import namespace="http://xml.sandre.eaufrance.fr/int/2" schemaLocation="../../int/2/sandre_ref_int.xsd"/>
+	<xsd:import namespace="http://xml.sandre.eaufrance.fr/par/1" schemaLocation="../../par/1/sandre_ref_par.xsd"/>
+	<xsd:import namespace="http://xml.sandre.eaufrance.fr/com/1" schemaLocation="../../com/1/sandre_ref_com.xsd"/>
+	<xsd:import namespace="http://xml.sandre.eaufrance.fr/Composants/5" schemaLocation="../../Composants/5/composantstypes.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation source="Code">LAB</xsd:documentation>
+		<xsd:documentation source="Id">urn:sandre:dictionnaire:sa_lab::1.1</xsd:documentation>
+		<xsd:documentation source="Titre">Echanges Laboratoires Commanditaires</xsd:documentation>
+		<xsd:documentation source="Copyright">2013</xsd:documentation>
+		<xsd:documentation source="Description">EDILABO&#160;; Echanges de données informatisées entre prestataires (laboratoires d’analyses, préleveurs) et commanditaires
+</xsd:documentation>
+		<xsd:documentation source="Contributeur"/>
+		<xsd:documentation source="Version">1.1</xsd:documentation>
+		<xsd:documentation source="Theme"/>
+		<xsd:documentation source="Couverture">France</xsd:documentation>
+		<xsd:documentation source="MotCle"/>
+		<xsd:documentation source="Lang">fra</xsd:documentation>
+		<xsd:documentation source="DateCreation">2013-04-02</xsd:documentation>
+		<xsd:documentation source="DateMAJ">2018-09-12</xsd:documentation>
+		<xsd:documentation source="DateValidation">2014-01-31</xsd:documentation>
+		<xsd:documentation source="Evolution">Evolutions 1.0 -&gt; 1.1:
+                                       
+                                       - Modification de la cardinalité entre les entités DEMANDE et PRELEVEMENT (0,N au lieu de 0,1), compte-tenu que les caractéristiques d'un même prélèvement peuvent se retrouver dans deux demandes de prestations distinctes de prélèvements et d'analyses (cas de figure entre trois acteurs)
+                                       - Ajout des attributs suivants au niveau de l'entité PRELEVEMENT: "Prélèvement réalisé"; "Agrément du prélèvement"; "Zone verticale prospectée"; "Profondeur du prélèvement"; "Coordonnée X, Y" et "Projection des coordonnées"
+                                       - Ajout de la nomenclature n°645 pour l'attribut Finalité du prélèvement
+                                       - Ajout de  l'attribut "Référence de l'analyse chez le laboratoire" dans l'entité ANALYSE
+                                       - Ajout de l'attribut "Code remarque" au niveau de l'entité MESURES DE PARAMETRES ENVIRONNEMENTAUX
+                                       - Suppression de l'association entre DEMANDE et ECHANTILLON (doublon avec l'association PRELEVEMENT- ECHANTILLON)
+                                       - Suppression de l'association entre ECHANTILLON et SUPPORT (doublon avec l'association PRELEVEMENT-SUPPORT)
+                                       - Précisions apportées aux définitions d'analyses in situ et de mesures environnementales
+                                       - Dans le domaine de l'AEP, la station de prélèvement correspond au concept d'installation AEP et non pas d'unité de distribution.
+                                       
+                                       - Modification de la définition des attributs "Limite de détection", "Limite de quantification", "Incertitude de la mesure"
+                                       - Ajout des attributs suivants dans l'entité ANALYSE:"Agrément de l'analyse", "Incertitude type"; "Incertitude élargie"
+                                       
+                                       - Modification du type de données pour l'attribut RsAna
+                                       - Suppression des règles métier  E4.12, E4.13 et E4.14 qui consistent à vérifier que le prestataire doit être préleveur et/ou laboratoires d'analyses. Un interlocuteur prestataire peut ne pas être mentionné en tant que préleveur et laboratoire. Son rôle consiste alors prendre uniquement la responsabilité du déroulement des prestations avec d'autres acteurs.
+                                       - Mise à jour de la nomenclature "Nature du produit à prélever" n°325
+                                       - Mise à jour de la définition de la durée de prélèvement
+                                       
+                                       
+                                       </xsd:documentation>
+		<xsd:documentation source="StatutDoc">Validé</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>-----------------Entités-----------------</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="Demande">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+DEMANDE</xsd:documentation>
+			<xsd:documentation source="Definition">Une demande est un message qui lie deux et uniquement deux acteurs pour la réalisation d'un ensemble de prestations en fonction de la nature même de la demande. Cet ensemble de prestations est à réaliser durant une période donnée. 
+Le commanditaire est par définition l'émetteur d'une demande. 
+Le prestataire est par définition le récepteur d'une demande.
+
+L'identification d'une demande relève du ressort du commanditaire de cette même demande.
+La codification d'une demande repose donc sur le principe suivant : un identifiant unique spécifiquement attribué par le commanditaire couplé au code de ce commanditaire (code SIRET ou code SANDRE) et à l'origine du code du commanditaire, ceci pour rendre l'unicité de chaque demande dans l'ensemble du périmètre d'échanges Laboratoires-Commanditaires.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CdDemandeCommanditaire" type="sa_lab:CdDemandeCommanditaire">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code de la demande chez le commanditaire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CdDemandePrestataire" type="sa_lab:CdDemandePrestataire">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code de la demande chez le prestataire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TypeDemande" type="sa_lab:TypeDemande">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Type de demande</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ContexteCodification" type="sa_lab:ContexteCodification">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Contexte de codification</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateDemande" type="sa_lab:DateDemande" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date de la demande</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LbDemande" type="sa_lab:LbDemande" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Libellé de la demande</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateDebutApplicationDemande" type="sa_lab:DateDebutApplicationDemande" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date de début d'application de la demande</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateFinApplicationDemande" type="sa_lab:DateFinApplicationDemande" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date de fin d'application de la demande</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReferenceMarche" type="sa_lab:ReferenceMarche" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Référence du marché</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CommentairesCommanditaire" type="sa_lab:CommentairesCommanditaire" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Commentaires sur la demande</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payeur" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Payeur de l'ensemble des prestations</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DestinataireRsAna" type="sa_int:Intervenant" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Destinataires des résultats d analyses</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commemoratif" type="sa_lab:Commemoratif" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratifs de l'entité DEMANDE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Prelevement" type="sa_lab:Prelevement" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Référence de la demande de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commanditaire" type="sa_int:Intervenant">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commanditaire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Prestataire" type="sa_int:Intervenant">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Prestataire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Prelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+PRELEVEMENT</xsd:documentation>
+			<xsd:documentation source="Definition">Le prélèvement correspond à l'opération permettant de constituer un ou plusieurs échantillons cohérents, durant une période donnée, relatifs à un support (exemple: EAU) et un lieu défini par la station de prélèvement éventuellement complété par la localisation de prélèvement, ceci quelle que soit la distribution opérée entre les différents flacons ramenés au(x) destinataires des échantillons.
+Le prélèvement correspond également à l'opération permettant d'effectuer des mesures de paramètres environnementaux et des mesures in situ.
+
+L'opération de prélèvement peut etre manuelle ou mécanique (à l'aide d'un préleveur automatique).
+
+Le prélèvement est effectué par l'organisme ayant la fonction de préleveur.
+
+Les informations sur le prélèvement d’échantillons sont sous la responsabilité du ou des organismes producteurs de données qui confirment ou non le résultat au regard de la connaissance et du controle du processus de production de la donnée et qui s'engagent ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CdPrelevement" type="sa_lab:CdPrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NumeroOrdrePrelevement" type="sa_lab:NumeroOrdrePrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Numéro d'ordre du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReferencePrel" type="sa_lab:ReferencePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Référence du prélèvement chez le préleveur</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DatePrel" type="sa_lab:DatePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DelaiPrel" type="sa_lab:DelaiPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Délai de réalisation du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HeurePrel" type="sa_lab:HeurePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Heure du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DureePrel" type="sa_lab:DureePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Durée du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LocalExactePrel" type="sa_lab:LocalExactePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Localisation exacte du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ConformitePrel" type="sa_lab:ConformitePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Conformité du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccredPrel" type="sa_lab:AccredPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Accréditation du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PrelSousReserve" type="sa_lab:PrelSousReserve" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Prélèvement sous réserve</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CommentairesPrel" type="sa_lab:CommentairesPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Commentaires sur le prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RisqueProduit" type="sa_lab:RisqueProduit" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Risque du produit de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UsageProduit" type="sa_lab:UsageProduit" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Usage du produit de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NatureProduit" type="sa_lab:NatureProduit" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Nature du produit de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NormeProduit" type="sa_lab:NormeProduit" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Norme appliquée au produit de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FinalitePrel" type="sa_lab:FinalitePrel" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Finalité du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RealisePrel" type="sa_lab:RealisePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Prélèvement réalisé</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AgrePrel" type="sa_lab:AgrePrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Agrément du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ZoneVerticaleProspectee" type="sa_lab:ZoneVerticaleProspectee" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Zone verticale prospectée</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Preleveur" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Références du préleveur</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProfondeurPrel" type="sa_lab:ProfondeurPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Profondeur du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MesureEnvironnementale" type="sa_lab:MesureEnvironnementale" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Mesure des conditions environnementales</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Echantillon" type="sa_lab:Echantillon" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Constitution d'un ensemble d'échantillons</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoordXPrel" type="sa_lab:CoordXPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Coordonnée X du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoordYPrel" type="sa_lab:CoordYPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Coordonnée Y du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProjectPrel" type="sa_lab:ProjectPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Projection des coordonnées du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Demande" type="sa_lab:Demande" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Réalisation de prelevements</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StationPrelevement" type="sa_lab:StationPrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Réalisation sur une station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Support" type="sa_par:Support">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Support sur lequel s'effectue le prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payeur" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Payeur du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Methode" type="sa_par:Methode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Méthode de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commemoratif" type="sa_lab:Commemoratif" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratif du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MesureEnvironnementale">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+MESURES DE PARAMETRES ENVIRONNEMENTAUX</xsd:documentation>
+			<xsd:documentation source="Definition">Les mesures des paramètres environnementaux sont effectuées afin de déterminer certaines caractéristiques de l'environnement telles que les conditions météorologiques, l'état des berges ou les caractéristiques de la station de prélèvement, conditionnant ainsi le déroulement des prélèvements et la qualité des échantillons.
+
+La mesure d'un paramètre environnemental n'est pas une mesure in situ.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RsParEnv" type="sa_lab:RsParEnv" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Résultat de la mesure du paramètre environnemental</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateParEnv" type="sa_lab:DateParEnv" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date de la mesure du paramètre environnemental</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HeureParEnv" type="sa_lab:HeureParEnv" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Heure de la mesure du paramètre environnemental</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ComParEnv" type="sa_lab:ComParEnv" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Commentaires sur la condition environnementale</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RqParEnv" type="sa_lab:RqParEnv">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code remarque sur la condition environnementale</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Prelevement" type="sa_lab:Prelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Mesure des conditions environnementales</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Parametre" type="sa_par:Parametre">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Paramètre environnemental mesuré lors du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Methode" type="sa_par:Methode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Méthode utilisée pour la mesure du paramètre environnemental</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UniteReference" type="sa_par:UniteReference">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Unite de mesure du paramètre environnemental</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="StationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+STATION DE PRELEVEMENT</xsd:documentation>
+			<xsd:documentation source="Definition">La station de prélèvement est un lieu principal, identifié et localisé, sur lequel s'effectue des prélèvements, ainsi que des mesures de paramètres in situ et de paramètres environnementaux.
+
+La station de prélèvement peut, en outre, être complétée par la localisation du prélèvement, qui indique un degré de précision supplémentaire du lieu sur lequel doit être réalisé le prélèvement. Une localisation de prélèvement est rattachée à une et une seule station de prélèvement.
+
+En règle générale, la station et localisation de prélèvement se raccordent à des terminologies différentes selon une thématique donnée et traitée par le SANDRE:
+
+THEMATIQUE                         EQUIV. STATION DE PRELEVEMENT                             EQUIV. LOCALISATION DEPRELEVEMENT
+Eaux superficielles                               Station de mesure                                                      Site de mesure
+Eaux souterraines                                Point d'eau / Qualitomètre                                       Site de mesure du qualitomètre
+AEP                                                       Unité de distribution / unité de production          Poste de surveillance
+Assainissements, rejets                      Ouvrage d'assainissement                                      Point de mesure
+Eaux littorales                                        Station de mesure                                                     /
+
+La station de prélèvement est localisée sur une seule commune sur le territoire , identifiée via son code INSEE. Pour les stations de prélèvement non incluses dans les limites communales, leur affectation à une commune sera arbitraire (exemple: en mer, prendre la commune la plus proche).
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CdStationPrelevement" type="sa_lab:CdStationPrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OrigineCdStationPrelevement" type="sa_lab:OrigineCdStationPrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Origine du code de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TypeStationPrelevement" type="sa_lab:TypeStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Type de station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LbStationPrelevement" type="sa_lab:LbStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Libellé de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AdresseStationPrelevement" type="sa_lab:AdresseStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Adresse de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoordXStationPrelevement" type="sa_lab:CoordXStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Coordonnée X de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoordYStationPrelevement" type="sa_lab:CoordYStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Coordonnée Y de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProjectStationPrelevement" type="sa_lab:ProjectStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Projection des coordonnées de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AltitudeStationPrelevement" type="sa_lab:AltitudeStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Altitude Z de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProjectAltiStationPrelevement" type="sa_lab:ProjectAltiStationPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Type de projection altimétrique de la station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commune" type="sa_com:Commune" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commune</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Prelevement" type="sa_lab:Prelevement" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Réalisation sur une station de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LocalPrelevement" type="sa_lab:LocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Localisation du prélèvement sur une station</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="LocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+LOCALISATION DE PRELEVEMENT</xsd:documentation>
+			<xsd:documentation source="Definition">Les localisations du prélèvement sont les différents espaces géographiques de référence où les prélèvements, mesures in situ et mesures des conditions environnementales sont réellement effectués. 
+Ces localisations de prélèvement doivent être définies en cohérence avec la nature de la station de prélèvement.
+Une localisation de prélèvement est rattachée à une et une seule station de prélèvement.
+
+En règle générale, la station et localisation de prélèvement se raccordent à des terminologies différentes selon une thématique donnée et traitée par le SANDRE.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CdLocalPrelevement" type="sa_lab:CdLocalPrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OrigineCdLocalPrelevement" type="sa_lab:OrigineCdLocalPrelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Origine du code de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LbLocalPrelevement" type="sa_lab:LbLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Libellé de la localisation du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TypeLocalPrelevement" type="sa_lab:TypeLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Type de localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoordXLocalPrelevement" type="sa_lab:CoordXLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Coordonnée X de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoordYLocalPrelevement" type="sa_lab:CoordYLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Coordonnée Y de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProjLocalPrelevement" type="sa_lab:ProjLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Projection des coordonnées de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AltMinLocalPrelevement" type="sa_lab:AltMinLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Altitude minimale de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AltMaxLocalPrelevement" type="sa_lab:AltMaxLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Altitude maximale de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProjAltiLocalPrelevement" type="sa_lab:ProjAltiLocalPrelevement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Type de projection altimétrique de la localisation de prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StationPrelevement" type="sa_lab:StationPrelevement" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Localisation du prélèvement sur une station</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commune" type="sa_com:Commune" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commune</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Echantillon">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+ECHANTILLON</xsd:documentation>
+			<xsd:documentation source="Definition">Un échantillon est le résultat d'un prélèvement réalisé ou commandé par un commanditaire. 
+Un échantillon est obligatoirement destiné à un intervenant (exemple:laboratoire).
+Cette définition n'introduit pas la notion de flacon puisque lors du prélèvement, plusieurs flacons peuvent etre amenés au laboratoire.
+Cette définition est issue d'un consensus Laboratoires/Commanditaires afin de répondre aux modalités d'échanges de données.
+
+Un échantillon est acheminé dans des conditions de transport et de conservation particulières. 
+Un échantillon fait obligatoirement référence à une demande d'analyses.
+En revanche, un échantillon ne fait pas obligatoirement à un prélèvement.
+
+Un échantillon porte toujours sur un seul support. Il n'est pas possible d'avoir un échantillon qui soit à la fois d'eau et d'êtres vivants. Par contre, un support peut faire l'objet de plusieurs échantillons pendant une opération de prélèvement. C'est le cas, par exemple, de l'eau qui peut être prélevée dans des flacons en verre et en plastique, suivant les paramètres à mesurer.
+
+
+Les informations sur l’échantillon sont sous la responsabilité de l’organisme ayant créé cet échantillon.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RefEchantillonCommanditaire" type="sa_lab:RefEchantillonCommanditaire">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Référence de l'échantillon chez le commanditaire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RefEchantillonPrel" type="sa_lab:RefEchantillonPrel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Référence de l'échantillon chez le préleveur</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RefEchantillonLabo" type="sa_lab:RefEchantillonLabo" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Référence de l'échantillon chez le laboratoire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CompletEchant" type="sa_lab:CompletEchant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Complétude de l'échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcceptabiliteEchant" type="sa_lab:AcceptabiliteEchant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Acceptabilité de l'échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateReceptionEchant" type="sa_lab:DateReceptionEchant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date de réception de l'échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HeureReceptionEchant" type="sa_lab:HeureReceptionEchant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Heure de réception de l'échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupeParametres" type="sa_lab:GroupeParametres" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Réalisation de série d'analyses</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Laboratoire" type="sa_int:Intervenant">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Laboratoire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CommentairesEchant" type="sa_lab:CommentairesEchant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Commentaires sur l'échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MethodeTransport" type="sa_par:Methode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Méthode de transport et de conditionnement pour l'echantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Prelevement" type="sa_lab:Prelevement">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Constitution d'un ensemble d'échantillons</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payeur" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Payeur de l'ensemble des analyses realisées sur un échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Analyse" type="sa_lab:Analyse" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Analyses realisées sur un échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commemoratif" type="sa_lab:Commemoratif" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratifs de l'entité ECHANTILLON</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Analyse">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+ANALYSE</xsd:documentation>
+			<xsd:documentation source="Definition">Les analyses  font référence à toutes les actions de détermination d'une valeur sur un échantillon, qu'ils s'agissent d'analyses, de mesures, d'observations, etc... faites en laboratoire ou sur le lieu de prélèvement (analyses in situ).
+
+Une analyse ne porte que sur un et un seul paramètre.
+
+Cette entité ne comprend pas les phases de prélèvement même quand celles-ci font partie intégrante de la méthode d'analyse.
+
+Les informations relatives aux résultats d'analyse sont fournies par l'organisme chargé de l'analyse, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au lieu où a été réalisé le prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="NoAna" type="sa_lab:NoAna">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Numéro d'ordre d'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DateAna" type="sa_lab:DateAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Date de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HeureAna" type="sa_lab:HeureAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Heure de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RsAna" type="sa_lab:RsAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Résultat de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RqAna" type="sa_lab:RqAna">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code remarque de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LDAna" type="sa_lab:LDAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Limite de détection</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LQAna" type="sa_lab:LQAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Limite de quantification</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LSAna" type="sa_lab:LSAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Limite de saturation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccreAna" type="sa_lab:AccreAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Accréditation de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ConfirAna" type="sa_lab:ConfirAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Confirmation du résultat d'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReserveAna" type="sa_lab:ReserveAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Analyse sous réserve</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IncertAna" type="sa_lab:IncertAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Incertitude analytique</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Echantillon" type="sa_lab:Echantillon" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Analyses realisées sur un échantillon</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RefAna" type="sa_lab:RefAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Résultat de référence</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Parametre" type="sa_par:Parametre">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Réalisation d'une analyse sur un paramètre</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FractionAnalysee" type="sa_par:FractionAnalysee">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Fraction analysée sur laquelle l'analyse est réalisée</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Methode" type="sa_par:Methode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Méthode utilisée pour l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UniteReference" type="sa_par:UniteReference">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Unité de mesure du résultat d'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Laboratoire" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Références du laboratoire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payeur" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Payeur de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MethExtraction" type="sa_par:Methode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Méthode d'extraction</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Solvant" type="sa_par:Parametre" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Solvant utilisé</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Commemoratif" type="sa_lab:Commemoratif" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratifs de l'entité ANALYSE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InsituAna" type="sa_lab:InsituAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Analyse in situ / en laboratoire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RdtExtraction" type="sa_lab:RdtExtraction" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Rendement de l'extraction</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CommentairesAna" type="sa_lab:CommentairesAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Commentaires sur l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="VolumeFiltre" type="sa_lab:VolumeFiltre" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Volume filtré</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RefLaboAna" type="sa_lab:RefLaboAna" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Référence de l'analyse chez le laboratoire</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IncertTypeAna" type="sa_lab:IncertTypeAna">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Incertitude type de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IncertElarAna" type="sa_lab:IncertElarAna">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Incertitude élargie de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AgreAna" type="sa_lab:AgreAna">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Agrément de l'analyse</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetFractionnement" type="sa_par:Methode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Méthode fractionnement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupeParametres" type="sa_lab:GroupeParametres" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Analyse définie dans un groupe de paramètres</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Commemoratif">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+COMMEMORATIF</xsd:documentation>
+			<xsd:documentation source="Definition">Un COMMEMORATIF est un attribut complémentaire structuré et rattaché à un seul et unique concept natif existant.
+Dans le cadre des échanges Laboratoires Commanditaires concernant l’envoi de demandes et/ou de résultats d’analyses, un COMMEMORATIF est obligatoirement rattaché à l’une des entités suivantes:
+- DEMANDE
+- PRELEVEMENT
+- ECHANTILLON
+- ANALYSE
+Si besoin, le SANDRE peut fédérer la codification de commémoratifs à l'échelle nationale, au travers d’une liste de référence administrée par le SANDRE, ceci pour lever toute ambiguité liée à la multiplicité de codes et la redondance des commémoratifs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CdCommemoratif" type="sa_lab:CdCommemoratif">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code du commémoratif</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LbCommemoratif" type="sa_lab:LbCommemoratif" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Libellé du commémoratif</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DsCommemoratif" type="sa_lab:DsCommemoratif" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Descriptif du commémoratif</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ValCommemoratif" type="sa_lab:ValCommemoratif" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Valeur du commémoratif</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Demande" type="sa_lab:Demande" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratifs de l'entité DEMANDE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Analyse" type="sa_lab:Analyse" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratifs de l'entité ANALYSE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Echantillon" type="sa_lab:Echantillon" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratifs de l'entité ECHANTILLON</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Prelevement" type="sa_lab:Prelevement" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Commémoratif du prélèvement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GroupeParametres">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+GROUPE DE PARAMETRES</xsd:documentation>
+			<xsd:documentation source="Definition">Un GROUPE DE PARAMETRES se réfère au cadre métier de certains commanditaires travaillant dans le domaine de l’Eau. En effet, certains organismes déterminent des ensembles d’ANALYSES à appliquer sur leurs prélèvements. Ce regroupement paramétrique est déterminé par le commanditaire selon ses propres critères, pouvant être de nature géographique (ex:groupes de paramètres à mesurer sur la rivière 'Fontaine'), analytique (ex :groupe pesticides), voire réglementaire (groupes de paramètres se rapportant au décret XXXX-XX).
+Un GROUPE DE PARAMETRES est défini par un code et un libellé spécifique au commanditaire.
+Un GROUPE DE PARAMETRES se caractérise par une liste de valeurs regroupant un paramètre, une méthode, une fraction analysée, une unité, le type d’analyse (in situ/en labo).
+
+Règles d'échange:
+Dans le cadre d’une demande numérisée d’analyses :
+Un ECHANTILLON PEUT faire l’objet de plusieurs GROUPES DE PARAMETRES distincts à analyser.
+Un même GROUPE DE PARAMETRES PEUT être appliquée à plusieurs ECHANTILLONS.
+Un GROUPE DE PARAMETRES PEUT contenir plusieurs ANALYSES à réaliser.
+Un PAYEUR peut être précisé pour le groupe de paramètres : il s’applique alors à tous les paramètres du regroupement.
+
+Un commanditaire a la possibilité de transmettre en amont d’un fichier d’échange “ Demande de prestations ”, le descriptif de l’ensemble des groupes de paramètres qu’ils souhaitent mesurer.
+Si un échantillon contient une référence à un groupe de paramètres non défini en tête de fichier, il est supposé que :
+- le descriptif de ce groupe a été précédemment envoyé lors d’une demande.
+- le descriptif de ce groupe n’a pas évolué.
+
+Il n’est pas autorisé d’ajouter ou de supprimer un paramètre au sein d’un groupe de paramètres pour un prélèvement ou un échantillon particulier, ceci en inadéquation par rapport aux groupes de paramètres définis en amont de fichier. En revanche, il est possible d’ajouter un ou plusieurs paramètre(s) à analyser sur un prélèvement ou échantillon, détaché(s) des groupes de paramètres.
+Le commanditaire veillera par ailleurs à ne pas inclure de doublons de paramètres à analyser, entre le contenu de ses différents groupes de paramètres.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CdGroupeParametres" type="sa_lab:CdGroupeParametres">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Code du groupe de paramètres</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LbGroupeParametres" type="sa_lab:LbGroupeParametres" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">
+   Libellé du groupe de paramètres</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Echantillon" type="sa_lab:Echantillon" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Réalisation de série d'analyses</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Analyse" type="sa_lab:Analyse" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Analyse définie dans un groupe de paramètres</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payeur" type="sa_int:Intervenant" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation source="Libelle">Payeur du groupe de paramètres</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:annotation>
+		<xsd:documentation>-----------------Attributs-----------------</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="CdDemandeCommanditaire">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code de la demande chez le commanditaire</xsd:documentation>
+			<xsd:documentation source="Definition">Code interne qu'affecte le commanditaire en charge de la demande de prestations correspondante, ceci à des fins de gestion.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:IdentifierType">
+				<xsd:maxLength value="100"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CdDemandePrestataire">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code de la demande chez le prestataire</xsd:documentation>
+			<xsd:documentation source="Definition">Code interne qu'affecte le prestataire chargé de réaliser l’ensemble des prestations demandées par le commanditaire, ceci à des fins de gestion.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="100"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="TypeDemande">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Type de demande</xsd:documentation>
+			<xsd:documentation source="Definition">Le type de demande indique à l'aide de l'un des codes suivants la nature des prestations exigées par le commanditaire.
+
+La liste des valeurs possibles est définie dans la nomenclature n°295.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType295"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ContexteCodification">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Contexte de codification</xsd:documentation>
+			<xsd:documentation source="Definition">Le contexte de codification désigne, à l’aide de l’un des codes suivants, le degré de numérisation des flux d’échange de données qui existe entre le commanditaire et le prestataire.
+
+La liste des valeurs possibles est définie dans la nomenclature n°336</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType336"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateDemande">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date de la demande</xsd:documentation>
+			<xsd:documentation source="Definition">La date de la demande correspond à la date, au jour près, à laquelle le message est rédigé et approuvé par le commanditaire.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LbDemande">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Libellé de la demande</xsd:documentation>
+			<xsd:documentation source="Definition">Le libellé de la demande rassemble des informations générales non structurées relatives à la demande.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="100"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateDebutApplicationDemande">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date de début d'application de la demande</xsd:documentation>
+			<xsd:documentation source="Definition">La date de début d'application de la demande correspond à la date, au jour près, à laquelle les prestations demandées sont réellement prises en charge par le prestataire (préleveur, laboratoire).
+Cette information est utile lorsque le commanditaire envoit une demande prévisionnelle de prestations qui prend effet ultérieurement à la date de rédaction ou de réception de la demande par le prestataire.
+La date de début d'application correspond, en règle générale à la date de réalisation de la première prestation qui est demandée.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateFinApplicationDemande">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date de fin d'application de la demande</xsd:documentation>
+			<xsd:documentation source="Definition">La date de fin d'application de la demande correspond à la date, au jour près, pour laquelle le prestataire interrompt ses actions . Cette date met fin aux actions entreprises par le prestataire. En revanche, elle ne met pas fin aux éventuels traitements des résultats issus de la demande  et réalisés par le prestataire, en vue d'un envoi ultérieur aux destinataires des résultats.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ReferenceMarche">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Référence du marché</xsd:documentation>
+			<xsd:documentation source="Definition">La référence du marché permet au commanditaire d'indiquer, lors de la rédaction de sa demande, une référence en rapport avec son propre système de facturation, ceci à des fins de gestion.
+Cet attribut pourra également être utile au prestataire, la référence du marché donnant à celui-ci une indication sur la finalité des prestations demandées.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="50"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CommentairesCommanditaire">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Commentaires sur la demande</xsd:documentation>
+			<xsd:documentation source="Definition">Informations diverses non structurées sur la demande rédigée par le commanditaire.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CdPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le code du prélèvement chez le commanditaire est la référence qu'affecte le commanditaire au prélèvement à des fins de gestion interne et de correspondance pour le traitement des résultats ultérieurs.
+L'origine du code du prélèvement précise quel est  l'intervenant qui a attribué à le code du prélèvement. Cette information s'avère utile lorsqu'un commanditaire demande à réaliser des analyses complémentaires sur un prélèvement qu'un tiers commanditaire a déjà codifié.
+Il prend pour valeur le code identifiant l'intervenant qui a codifié le prélèvement(code SIRET ou code SANDRE), de manière cohérente à l'identifiant qui a été adressé au laboratoire.
+ </xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:IdentifierType">
+				<xsd:attribute name="schemeAgencyID" type="xsd:normalizedString" use="required"/>
+				<xsd:attribute name="schemeID" type="xsd:normalizedString" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NumeroOrdrePrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Numéro d'ordre du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le numéro d'ordre du prélèvement  permet de distinguer les éventuels prélèvements se rapportant à une seule référence de prélèvement chez le commanditaire, notamment lorsqu'il s'agit d'un prélèvement multiple, périodique, ou réalisé par un automate.
+Le numéro d'ordre du prélèvement prend la valeur '1' par défaut.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="10"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ReferencePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Référence du prélèvement chez le préleveur</xsd:documentation>
+			<xsd:documentation source="Definition">La référence du prélèvement chez le préleveur est le code ou le libellé que le préleveur attribue à des fins de gestion au prélèvement réalisé.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="100"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DatePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Au sein du message 'Demande de prestations', la date du prélèvement désigne la date à partir de laquelle l'action de prélèvement peut se dérouler. Cette date est accompagnée du délai de réalisation du prélèvement, exprimé en jour, invoquant une période tolérée pour la réalisation du prélèvement, ceci à partir de la date de prélèvement.
+Au sein du message 'Envoi de résultats', la date du prélèvement correspond à la date à laquelle l'action de prélèvement a réellement débutée.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DelaiPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Délai de réalisation du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le délai de réalisation d'un prélèvement est exprimé en jour. Il désigne le nombre de jour qui est toléré pour la réalisation d'un prélèvement, ceci à partir de la date de prélèvement renseignée.
+Lorsqu'un prélèvement doit être réalisé dans un délai inférieur à vingt quatre heures, le délai est indiqué à '0'.
+
+Cet attribut relève de la responsabilité du commanditaire.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="HeurePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Heure du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'heure du  prélèvement est l'heure à laquelle doit débuter ou a débuté une opération de prélèvement, c'est à dire, l'heure à laquelle l'équipe de prélèvement doit arriver ou est arrivé sur les lieux.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TimeType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DureePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Durée du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La durée du prélèvement à réaliser précise , le cas échéant, le temps durant lequel le prélèvement doit être réalisé ou est réalisé.
+Le format de cet attribut est le suivant: HHHH:MM:SS
+HHHH peut prendre comme valeur la liste des nombres entiers compris entre '0000' et '9999'.
+MM peut prendre comme valeur la liste des nombres entiers compris entre '00' et '59'.
+SS peut prendre comme valeur la liste des nombres entiers compris entre '00' et '59'.
+
+(exemple: durée de trois heures et demi : '03:30:00'
+durée de deux jours: '48:00:00')
+
+Si la durée de prélèvement n'est pas renseignée ou si celle-ci prend la valeur '00:00:00', alors le prélèvement est considéré comme étant ponctuel.
+
+ 
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="10"/>
+				<xsd:pattern value="[0-9]{1,4}:[0-5][0-9]:[0-5][0-9]"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LocalExactePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Localisation exacte du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La localisation exacte du prélèvement est un texte de rédaction libre qui apporte des précisions sur le lieu effectif du prélèvement à réaliser ou réalisé. Cet attribut peut aussi comporter des informations pratiques utiles au bon déroulement des opérations de prélèvement. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="80"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ConformitePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Conformité du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La conformité de prélèvement indique, à l'aide de l'un des codes suivants, si des difficultés ont été rencontrées au cours du prélèvement, notamment  au regard des recommandations qui sont définies dans la norme NF T90-100 d'août 1972.
+
+La liste des valeurs possibles est définie dans la nomenclature n°296.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType296"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AccredPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Accréditation du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'accréditation du prélèvement indique, à l'aide de l'un des codes suivants, si le préleveur a été accrédité et reconnu par le Comité Français d'Accréditation (COFRAC) ou par un autre organisme d'accréditation similaire, pour ses compétences techniques et organisationnelles dans le cadre du prélèvement, au vu de la norme ISO 17025.
+
+La liste des valeurs possibles est définie dans la nomenclature n°299.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType333"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="PrelSousReserve">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Prélèvement sous réserve</xsd:documentation>
+			<xsd:documentation source="Definition">L'attribut 'prélèvement sous réserve' permet au prestataire préleveur d'apporter, à l'aide de l'un des codes suivants, un jugement critique sur le déroulement du prélèvement susceptible d'avoir des répercutions au niveau de la représentativité des échantillons obtenus à la suite du prélèvement.
+
+La liste des valeurs possibles est définie dans la nomenclature n°334.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType334"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CommentairesPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Commentaires sur le prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Informations diverses non structurées sur le prélèvement à réaliser ou réalisé.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RisqueProduit">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Risque du produit de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le risque du produit correspond à une zone textuelle libre, comportant des éléments et indications, mentionnés par le commanditaire de la demande, relatifs aux intérêts et enjeux liés au déroulement du prélèvement.
+Au vu de ces indications, le préleveur est à même de prendre les dispositions et précautions nécessaires au bon déroulement du prélèvement.
+A préciser toutefois qu'en aucun cas des échanges de données informatisées ne pourront se substituer à des contacts directs entre les acteurs mis en jeu, lorsqu'une situation remarquable présente de réels risques au sens propre du terme.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="UsageProduit">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Usage du produit de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L’usage du produit correspond à la finalité, l’utilité qui est attribuée au composant sur lequel porte l’investigation, étroitement corrélée aux activités humaines qui s’y rapportent. Cette information peut aussi s'avérer utile à échanger pour le laboratoire d'analyses, pour appliquer une différenciation tarifaire sur les analyses réalisées par la suite du prélèvement. (le taux de TVA n'est pas le même suivant l'usage du produit de prélèvement)
+
+
+La liste des valeurs possibles est définie dans la nomenclature n°329.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType329"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NatureProduit">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Nature du produit de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La nature du produit indique, à l'aide de l'un des codes suivants, la nature exacte du composant sur lequel porte l'investigation, en fonction de ses caractéristiques naturelles ou intrinsèques. La nature du produit se rattache à un seul support (exemple: support EAU)
+
+
+La liste des valeurs possibles est définie dans la nomenclature n°325.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType325"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NormeProduit">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Norme appliquée au produit de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut désigne, à l'aide de l'un des codes suivants, la norme qualitative que doit respecter le support EAU. Cette information est particulièrement échangée entre DDASS et laboratoires d'analyses, car elle conditionne implicitement certaines précautions à prendre dans le cadre de la réalisation des prélèvements et analyses.
+
+La liste des valeurs possibles est définie dans la nomenclature n°215.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType215"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="FinalitePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Finalité du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'attribut 'Finalité du prélèvement' désigne, à l'aide de l'un des codes suivants, un objectif poursuivi et sous-jacent à la réalisation du prélèvement. Cette information relève de la responsabilité du commanditaire.
+
+La liste des valeurs possibles est définie dans la nomenclature n°298.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType645"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RealisePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Prélèvement réalisé</xsd:documentation>
+			<xsd:documentation source="Definition">Attribut booléen se retrouvant dans le message d'envoi de résultats et indiquant si le prélèvement a bien été réalisé ou non. Un prélèvement peut par exemple ne pas se dérouler en raison du manque d'eau en période d'étiage dans un cours d'eau.
+
+La valeur "1" indique que le prélèvement a été réalisé tandis que "0" indique qu'il n'a pas été réalisé.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:IndicatorType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AgrePrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Agrément du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Attribut indiquant si le prélèvement a été réalisé par un interlocuteur ayant été agréé selon les conditions susvisées par l'arrêté en vigueur au moment du prélèvement et portant sur les modalités d'agrément des laboratoires effectuant des analyses dans le domaine de l'eau et des milieux aquatiques au titre du code de l'environnement 
+
+La valeur "1" indique" que l'interlocuteur est agréé tandis que la valeur "0" indique qu'il ne l'est pas.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:IndicatorType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ZoneVerticaleProspectee">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Zone verticale prospectée</xsd:documentation>
+			<xsd:documentation source="Definition">La zone verticale prospectée indique la zone où a été effectuée le prélèvement physico-chimique selon la nomenclature administrée par le Sandre. Cette information peut être complétée par une profondeur exacte indiquée dans l’information ‘Profondeur du prélèvement’.
+La liste des valeurs possibles est définie dans la nomenclature Sandre n°430.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType430"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProfondeurPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Profondeur du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La profondeur indique la profondeur exacte du prélèvement en mètres lorsque l’information « Zone  prospectée »est égale à : 
+« Prélèvement ponctuel de profondeur intermédiaire » : profondeur du prélèvement (obligatoire) 
+« Prélèvement de fond : Précision possible de la profondeur de fond  (si connu)
+« Hypolimnion » : Précision possible de la profondeur de l’hypolimnion (si connu)
+« Thermocline » : Précision possible de la profondeur de la thermocline (si connu)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordXPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Coordonnée X du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La coordonnée X du prélèvement est la coordonnée X  du lieu sur lequel a été réalisé le prélèvement, ceci dans la projection indiquée dans l'attribut 'Projection des coordonnées du prélèvement'.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordYPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Coordonnée Y du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La coordonnée Y du prélèvement est la coordonnée Y du lieu sur lequel a été réalisé le prélèvement, ceci dans la projection indiquée dans l'attribut 'Projection des coordonnées du prélèvement'.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProjectPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Projection des coordonnées du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut est un code à deux positions qui indique la projection dans laquelle s'expriment les coordonnées de la localisation de prélèvement. Les coordonnées devront être déterminées sur une carte dont l'échelle est supérieure ou égale au 50 000e.
+
+La liste des codes possibles pour cet attribut est la suivante, totalement compatible avec la norme EDIGéO :
+
+La liste des valeurs possibles est définie dans la nomenclature n°22.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType22"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RsParEnv">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Résultat de la mesure du paramètre environnemental</xsd:documentation>
+			<xsd:documentation source="Definition">Le résultat de la mesure du paramètre environnemental est soit la valeur du résultat du paramètre quantitatif, soit le code de la valeur possible du paramètre qualitatif.
+
+Le résultat du paramètre quantitatif est exprimé dans l'unité de mesure définie pour le paramètre mesuré avec 5 chiffres significatifs au maximum.
+
+Les informations relatives aux résultats de mesures des conditions environnementales sont fournies par l'organisme chargé du prélèvement, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateParEnv">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date de la mesure du paramètre environnemental</xsd:documentation>
+			<xsd:documentation source="Definition">La date de la mesure de la condition environnementale des prélèvements est la date au jour près à laquelle a débuté la mesure de la condition environnementale.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="HeureParEnv">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Heure de la mesure du paramètre environnemental</xsd:documentation>
+			<xsd:documentation source="Definition">L'heure de la mesure de la condition environnementale des prélèvements est l'heure à laquelle a débuté la mesure.
+
+L'heure est donnée arrondie à la minute la plus proche.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TimeType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ComParEnv">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Commentaires sur la condition environnementale</xsd:documentation>
+			<xsd:documentation source="Definition">Texte libre indiquant d'éventuelles remarques faites par l'intervenant préleveur.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RqParEnv">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code remarque sur la condition environnementale</xsd:documentation>
+			<xsd:documentation source="Definition">Le code remarque de l'analyse  permet d'apporter des précisions sur le résultat en indiquant si le résultat obtenu est inférieur à un seuil, ou qu'il y a présence de traces...
+  
+  Le code remarque prend comme valeurs celles de la nomenclature ci-après administrée par le SANDRE.
+  
+ La liste des valeurs possibles est définie dans la nomenclature n°155.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType155"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CdStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le code de la station de prélèvement correspond à un identifiant unique au sein du système d'identifiant renseigné au niveau de l'attribut 'Origine du code de la station de prélèvement'.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:IdentifierType">
+				<xsd:attribute name="schemeAgencyID" type="cct:CodeType297" use="required"/>
+				<xsd:attribute name="schemeID" type="xsd:normalizedString" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrigineCdStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Origine du code de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'origine du code de la station de prélèvement est un code qui définit à l'aide de la nomenclature ci-dessous administrée par le SANDRE, le système d'identifiant dont le code de la station de prélèvement.
+
+La liste des valeurs possibles est définie dans la nomenclature n°297.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType297"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="TypeStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Type de station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut permet d’indiquer la nature ou la fonction se rapportant à la station de prélèvement. La liste des valeurs possibles varie selon les thématiques de l’eau.
+Les deux principales listes de valeurs possibles sont :
+
+La liste des valeurs possibles est définie dans la nomenclature n°731.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType731"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LbStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Libellé de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le libellé de la station de prélèvement permet d'identifier la station de façon plus explicite que son code.
+
+Le renseignement de cet attribut relève de la responsabilité du ou des organismes producteurs de données relatives à la station de prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="80"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AdresseStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Adresse de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Lorsqu'une station de prélèvement est localisée à partir de références administratives, l'adresse de la station de prélèvement peut être précisée en respectant la règle suivante :
+Rue / Code postal / Ville
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordXStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Coordonnée X de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La coordonnée X de la station de prélèvement est la coordonnée X  du lieu sur lequel a été réalisé le prélèvement, ceci dans la projection indiquée dans l'attribut 'Projection des coordonnées de la station de prélèvement'.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordYStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Coordonnée Y de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La coordonnée Y de la station de prélèvement est la coordonnée Y du lieu sur lequel a été réalisé le prélèvement, ceci dans la projection indiquée dans l'attribut 'Projection des coordonnées de la station de prélèvement'.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProjectStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Projection des coordonnées de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut est un code à deux positions qui indique la projection dans laquelle s'expriment les coordonnées de la localisation de prélèvement. Les coordonnées devront être déterminées sur une carte dont l'échelle est supérieure ou égale au 50 000e.
+
+La liste des codes possibles pour cet attribut est la suivante, totalement compatible avec la norme EDIGéO :
+
+La liste des valeurs possibles est définie dans la nomenclature n°22.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType22"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AltitudeStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Altitude Z de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'altitude Z de la station de prelevement est l'altitude moyenne exprimé en mètre, entre le niveau de la mer et la station de prélèvement, selon le type de projection altimetrique indiqué.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProjectAltiStationPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Type de projection altimétrique de la station de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut est un code à deux positions, qui indique le système de projection altimétrique utilisé pour exprimer les altitudes de la station de prélèvement.
+
+La liste des valeurs possibles est définie dans la nomenclature n°76.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType76"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CdLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le code de la localisation de prélèvement correspond à un identifiant unique au sein du système d'identifiant renseigné au niveau de l'attribut 'Origine du code de la localisation de prélèvement'.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:IdentifierType">
+				<xsd:attribute name="schemeAgencyID" type="cct:CodeType330" use="required"/>
+				<xsd:attribute name="schemID" type="xsd:normalizedString" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrigineCdLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Origine du code de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'origine du code de la localisation de prélèvement est un code qui définit à l'aide de la nomenclature ci-dessous administrée par le SANDRE, le système d'identifiant dont le code de la localisation de prélèvement.
+
+La liste des valeurs possibles est définie dans la nomenclature n°330.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType330"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LbLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Libellé de la localisation du prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le libellé de la localisation de prélèvement permet d'identifier la localisation de façon plus explicite que son code.
+
+Le renseignement de cet attribut relève de la responsabilité du ou des organismes producteurs de données relatives à la station et à la localisation de prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="80"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="TypeLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Type de localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Le type de localisation de prélèvement est une information optionnelle utilisée par certains référentiels de localisation de prélèvement. 
+Le type de localisation de prélèvement est défini selon un référentiel commun aux différents interlocuteurs.
+Par exemple, dans la thématique assainissement, ce type permet de préciser s'il s'agit d'un point de mesure situé en entrée station (A3) ou en sortie station (A4).
+
+La liste des valeurs possibles varient selon les thématiques de l'eau:
+
+Pour la thématique 'Assainissement', la liste est la suivante:
+
+----------------------------------------------------------------------
+Code ! Mnémonique ! Libellé
+----------------------------------------------------------------------
+1 ! En entrée ! Pt physique : En entrée
+2 ! Sur ! Pt physique : Sur
+3 ! En sortie ! Pt physique : En sortie
+4 ! By pass ! Pt physique : By pass
+5 ! Au Champ ! Pt physique : au champ
+----------------------------------------------------------------------
+
+
+Pt physique : By pass :
+------------------------
+Appareillage situé dans le by pass de l'ouvrage
+
+
+Pt physique : En entrée :
+--------------------------
+Appareillage situé en entrée de l'ouvrage
+
+
+Pt physique : En sortie :
+--------------------------
+Appareillage situé en sortie de l'ouvrage
+
+
+Pt physique : Sur :
+--------------------
+Appareillage situé dans l'ouvrage
+
+
+
+Pt physique : au champ :
+------------------------
+Point de mesure localisé dans une parcelle agricole donnée.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="10"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordXLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Coordonnée X de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La coordonnée X de la localisation de prélèvement est la coordonnée X  exacte du lieu sur lequel a été réalisé le prélèvement, ceci dans la projection indiquée dans l'attribut 'Projection des coordonnées de la localisation de prélèvement' associée.
+Cette coordonnée est indiquée uniquement si elle est différente de celle de la station de prélèvement associée. 
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CoordYLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Coordonnée Y de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">La coordonnée Y de la localisation de prélèvement est la coordonnée Y  exacte du lieu sur lequel a été réalisé le prélèvement, ceci dans la projection indiquée dans l'attribut 'Projection des coordonnées de la localisation de prélèvement' associée.
+Cette coordonnée est indiquée uniquement si elle est différente de celle de la station de prélèvement associée. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProjLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Projection des coordonnées de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut est un code à deux positions qui indique la projection dans laquelle s'expriment les coordonnées de la localisation de prélèvement. Les coordonnées devront être déterminées sur une carte dont l'échelle est supérieure ou égale au 50 000e.
+
+La liste des codes possibles pour cet attribut est la suivante, totalement compatible avec la norme EDIGéO :
+
+La liste des valeurs possibles est définie dans la nomenclature n°22.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType22"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AltMinLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Altitude minimale de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'altitude minimale de la localisation de prélèvement est le niveau minimal de la localisation, exprimé en mètres, selon le 'type de projection altimétrique' indiqué.
+A défaut, il peut s'agir de l'altitude moyenne auquel cas l'altitude maximale n'est pas renseignée.
+Dans le cas des eaux souterraines, l'altitude minimale correspond à une profondeur.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AltMaxLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Altitude maximale de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">L'altitude maximale de la localisation de prélèvement est le niveau maximal de la localisation, exprimée en mètres, selon le 'type de projection altimétrique' indiqué.
+Dans le cas des eaux souterraines, l'altitude maximale correspond à une profondeur.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProjAltiLocalPrelevement">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Type de projection altimétrique de la localisation de prélèvement</xsd:documentation>
+			<xsd:documentation source="Definition">Cet attribut est un code à deux positions, qui indique le système de projection altimétrique utilisé pour exprimer les altitudes de la localisation de prélèvement.
+
+La liste des valeurs possibles est définie dans la nomenclature n°76.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType76"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RefEchantillonCommanditaire">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Référence de l'échantillon chez le commanditaire</xsd:documentation>
+			<xsd:documentation source="Definition">La référence de l'échantillon chez le commanditaire correspond à un identifiant unique attribué par le commanditaire de la demande à laquelle se rapporte l'échantillon.
+
+Cette référence permet à un laboratoire recevant une demande d'analyses, d'effectuer le lien entre l'échantillon correspondant qui  serait produit par un préleveur après que celui-ci ait reçu une demande de prélèvements dans laquelle le même commanditaire a également précisé ce code de l'échantillon en question.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RefEchantillonPrel">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Référence de l'échantillon chez le préleveur</xsd:documentation>
+			<xsd:documentation source="Definition">Code unique attribué par le préleveur afin de caractériser son échantillon.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="100"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RefEchantillonLabo">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Référence de l'échantillon chez le laboratoire</xsd:documentation>
+			<xsd:documentation source="Definition">Code unique attribué par le laboratoire afin de caractériser son échantillon.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="100"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CompletEchant">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Complétude de l'échantillon</xsd:documentation>
+			<xsd:documentation source="Definition">L'attribut 'Complétude de l'échantillon' ne s'applique qu'au message 'Envoi de résultats'. Il permet au laboratoire d'indiquer l'état d'avancement des analyses réalisées pour chaque échantillon et à l'aide de l'un des codes suivants. Le laboratoire pourra en effet transmettre ses résultats par l'intermédiaire d'un ou plusieurs fichiers d'échange. Cet attribut permettra alors au laboratoire d'affirmer que l'ensemble des analyses ont été réalisées et transmis, ceci pour un échantillon donné.
+
+
+La liste des valeurs possibles est définie dans la nomenclature n°340.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType340"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcceptabiliteEchant">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Acceptabilité de l'échantillon</xsd:documentation>
+			<xsd:documentation source="Definition">L'acceptabilité d'un échantillon indique, à l'aide de l'un des codes suivants, l'appréciation d'un échantillon faisant suite aux observations critiques faites par le destinataire de l'échantillon (laboratoire), sur les conditions intrinsèques à l'échantillon, à savoir le FLACONNAGE, la TEMPERATURE et la VOLUMETRIE.
+Le jugement porté sur l'acceptabilité d'un échantillon doit tenir compte des objectifs poursuivis qui sont à l'origine de la constitution de l'échantillon.
+
+La liste des valeurs possibles est définie dans la nomenclature n°298.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType298"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateReceptionEchant">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date de réception de l'échantillon</xsd:documentation>
+			<xsd:documentation source="Definition">Date, au jour près, à laquelle l'échantillon est pris en charge par le laboratoire chargé d'y effectuer des analyses.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="HeureReceptionEchant">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Heure de réception de l'échantillon</xsd:documentation>
+			<xsd:documentation source="Definition">Heure à laquelle l'échantillon est pris en charge par le laboratoire pour y effectuer des analyses.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TimeType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CommentairesEchant">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Commentaires sur l'échantillon</xsd:documentation>
+			<xsd:documentation source="Definition">Les commentaires sur l'échantillon comportent, par exemple, tous les renseignements textuels relatifs au cycle de vie de l'échantillon ou à ses caractéristiques.
+
+Les informations sur l'échantillon sont sous la responsabilité de l'organisme ayant créé cet échantillon.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="NoAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Numéro d'ordre d'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">Le numéro d'ordre d'analyse est un code numérique qui permet de distinguer les analyses effectuées sur un même échantillon, pour lesquelles le paramètre recherché, la méthode d'analyse pratiquée et la fraction analysée sont identiques.
+Le numéro d'ordre d'analyse permet de différencier les résultats d'analyses répétitives.
+Le numéro d'ordre d'analyse prend la valeur '1' par défaut.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DateAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Date de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">La date de l'analyse est la date donnée au jour près à laquelle a débuté l'analyse ; ceci afin de savoir si le temps écoulé entre le prélèvement et l'analyse reste dans des normes acceptables pour que le résultat de l'analyse soit significatif.
+
+Les informations relatives aux résultats d'analyse sont fournies par l'organisme chargé de l'analyse, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="HeureAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Heure de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">L'heure de l'analyse est l'heure à laquelle a débuté l'analyse ; ceci afin de savoir si le temps écoulé entre le prélèvement et l'analyse reste dans des normes acceptables pour que le résultat de l'analyse soit significatif.
+
+Les informations relatives aux résultats d'analyse sont fournies par l'organisme chargé de l'analyse, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TimeType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RsAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Résultat de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">Le résultat de l'analyse est soit la valeur du résultat du paramètre quantitatif, soit le code de la valeur possible du paramètre qualitatif.
+
+Le résultat du paramètre quantitatif est exprimé dans l'unité de mesure définie pour le paramètre mesuré avec 5 chiffres significatifs au maximum.
+
+Les informations relatives aux résultats d'analyse sont fournies par l'organisme chargé de l'analyse, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RqAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code remarque de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">Le code remarque de l'analyse  permet d'apporter des précisions sur le résultat en indiquant si le résultat obtenu est inférieur à un seuil, ou qu'il y a présence de traces...
+  
+  Le code remarque prend comme valeurs celles de la nomenclature ci-après administrée par le SANDRE.
+  
+ La liste des valeurs possibles est définie dans la nomenclature n°155.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType155"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LDAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Limite de détection</xsd:documentation>
+			<xsd:documentation source="Definition">La limite de détection désigne le signal de sortie ou la valeur de concentration au-delà desquels il est permis d'affirmer avec un certain degré de confiance qu'un échantillon est différent d'un échantillon témoin ne contenant pas l'analyte concerné</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LQAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Limite de quantification</xsd:documentation>
+			<xsd:documentation source="Definition">L'attribut 'limite de quantification'  désigne une concentration de l'analyte qui peut raisonnablement être déterminée avec un degré d'exactitude acceptable. Dans le cadre de cet arrêté, le degré d'exactitude minimal exigé au niveau de la limite de quantification est de 60 % (pour un degré de confiance de 95 %). Cette exigence est cohérente avec la définition de la norme NFT90210</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LSAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Limite de saturation</xsd:documentation>
+			<xsd:documentation source="Definition">La limite de saturation correspond à la valeur au dessus de laquelle le laboratoire n'est plus en mesure de déterminer avec exactitude la quantité du paramètre recherché.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AccreAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Accréditation de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">L'accréditation d'une analyse indique, à l'aide de l'un des codes suivants, le degré de confiance porté sur la qualité et la fiabilité du résultat. 
+
+La liste des valeurs possibles est définie dans la nomenclature n°299.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType299"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ConfirAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Confirmation du résultat d'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">La confirmation du résultat permet au laboratoire, à l'aide de l'un des codes suivants, de confirmer que le résultat a été obtenu à maintes reprises. La confirmation relève uniquement de la REPETABILITE du résultat obtenu.
+Une analyse est dite 'confirmée' lorsqu'au moins deux analyses ont été réalisées dans les mêmes conditions, et dont les résultats obtenus sont comparables, avec aucune différence significative.
+
+La liste des valeurs possibles est définie dans la nomenclature n°300.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType300"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ReserveAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Analyse sous réserve</xsd:documentation>
+			<xsd:documentation source="Definition">L'attribut 'Analyse sous réserve' permet au responsable du laboratoire d'apporter, à l'aide de l'un des codes suivants,  une appréciation ou un jugement personnel quant à l'interprétation du résultat obtenu, ceci par rapport à des normes et référentiels reconnus pour un paramètre donné.
+L'attribut 'Analyse sous réserve' doit être renseigné en cohérence avec l'attribut 'Confirmation du résultat' qui quant à lui, se rapporte uniquement à la répétabilité du résultat.
+Par exemple, le laboratoire pourra émettre une réserve pour un résultat particulier lorsque celui-ci a été obtenu à maintes reprises ('résultat confirmé') mais que le temps écoulé entre la réalisation de l'échantillon et l'analyse remet en question la représentativité même de l'échantillon, le contenu du produit ayant probablement été modifié ou altéré.
+Le commanditaire aura ainsi, par le biais de cet indicateur, la possibilité d'exploiter sur le plan statistique, des valeurs sûres en écartant éventuellement les valeurs remarquables mises en évidence par le laboratoire.
+
+La liste des valeurs possibles est définie dans la nomenclature n°335.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType335"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="IncertAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Incertitude analytique</xsd:documentation>
+			<xsd:documentation source="Definition"> l'incertitude caractérise la variabilité potentielle du résultat d'une mesure. sauf indication contraire, elle est déterminée en s'appuyant sur la norme NF EN ISO 11352.
+L’incertitude est exprimée en %. Le facteur d’élargissement  est pris égal à 2 (k=2) (par exemple pour une incertitude de 25% k=2 le résultat échangé est 25).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RefAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Résultat de référence</xsd:documentation>
+			<xsd:documentation source="Definition">Pour éviter au cours des échanges de données, la dégradation de l'information liée au résultat (perte du nombre de chiffres significatifs, perte de la valeur originale...), le résultat de référence vise à conserver sous forme textuelle, trois informations : le résultat originel avec le nombre de chiffres significatifs, l'unité de mesure et l'expression de l'unité (la molécule, l'ion, l'atome...).
+
+L'information de cet attribut doit être sous la forme :
+	'Valeur Unité (Expression)'
+
+Exemples :
+	- 50,0 mg/l (NO3)
+	- 2,5 10^2 µg/kg (Cu)
+	- 0,02 µg/l (CN)
+
+Les informations relatives aux résultats d'analyse sont fournies par l'organisme chargé de l'analyse, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="200"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="InsituAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Analyse in situ / en laboratoire</xsd:documentation>
+			<xsd:documentation source="Definition">L'attribut 'Type prédéfini d'analyse in situ / en laboratoire' précise si l'analyse à réaliser doit avoir lieu in situ ou en laboratoire en prenant l'un des codes suivants :
+
+La liste des valeurs possibles est définie dans la nomenclature n°156.
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:CodeType156"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RdtExtraction">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Rendement de l'extraction</xsd:documentation>
+			<xsd:documentation source="Definition">Le rendement de l'extraction est exprimé en pourcentage, et correspond au rendement moyen spécifique d'une substance.
+(exemple : pour un rendement de 90%, la valeur échangée sera 90)
+
+Le rendement d'extraction est obtenu par comparaison de la pente de la droite d'étalonnage réalisée avec des solutions étalons(produit pru en solution dans un solvant) à la pente de la droite d'étalonnage réalisée à partir d'échantillons d'eau dopés (sur toute la gamme d'étalonnage) puis extraits et analysés comme des étalons.
+Le rendement moyen spécifique Ai d'une substance i est déterminé en utilisant l'équation suivante:
+Ai = (mig / mi) / Fv
+avec
+mig : pente de la courbe d'étalonnage réalisé avec les solutions aqueuses dopées et extraites (5 au minimum).
+
+mi : pente de la courbe d'étalonnage.
+
+Fv : rapport du volume de solvant d'extraction au volume d'échantillon.
+
+Un rendement constant est une exigence essentielle pour une bonne fidélité et exactitude du résultat analytique.
+Des variations de ces valeurs indiquent des problèmes au niveau de certaines étapes de l'analyse.
+Le rendement dépend du coefficient de partage et est caractéristique de chaque substance et des conditions de travail.
+Un rendement d'extraction supérieur à 60% est considéré comme 'un bon rendement'.
+
+
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CommentairesAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Commentaires sur l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">Ensemble des informations non structurées sur l'analyse que le laboratoire souhaite porter à la connaissance du commanditaire, notamment s'il ne confirme pas le résultat obtenu du fait d'une défaillance quelconque.
+
+Exemple : la description des difficultés rencontrées lors de l'analyse.
+
+Les informations relatives aux résultats d'analyse sont fournies par l'organisme chargé de l'analyse, et communiquées sous la responsabilité de l'organisme producteur de données qui confirme ou non le résultat au regard de la connaissance et du contrôle du processus de production de la donnée et qui s'engage ou pas sur la vraisemblance et la représentativité de la donnée par rapport au milieu où a été réalisé le prélèvement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="VolumeFiltre">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Volume filtré</xsd:documentation>
+			<xsd:documentation source="Definition">Le volume filtré, exprimé en litre, désigne le volume du support qui a été réellement filtré pour un dénombrement de micro-organismes (ex :légionelles). Par exemple, pour un résultat exprimé en N/250mL, le volume réellement filtré est 270mL. Cette information peut s'avérer utile lors de l'interprétation d'un résultat d'analyse.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="RefLaboAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Référence de l'analyse chez le laboratoire</xsd:documentation>
+			<xsd:documentation source="Definition">La référence de l'analyse chez le laboratoire est le code que le laboratoire affecte à la l'analyse à des fins d'identification interne, de gestion ou de correspondance pour la facturation des prestations.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="IncertTypeAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Incertitude type de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">désigne l'incertitude de mesure exprimée sous la forme d'un écart-type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="IncertElarAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Incertitude élargie de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">(ou globale) désigne le produit d'une incertitude type (composée) et d'un facteur (d'élargissement k) supérieur à 1. Le facteur d'élargissement k est pris égal à 2 pour atteindre un niveau (intervalle) de confiance de 95 %.
+Il correspond au commémoratif 19 de la version 1 du dictionnaire EDILABO</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AgreAna">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Agrément de l'analyse</xsd:documentation>
+			<xsd:documentation source="Definition">Attribut indiquant si l'analyse a été réalisée par un interlocuteur ayant été agréé selon les conditions susvisées par l'arrêté en vigueur au moment du prélèvement et portant sur les modalités d'agrément des laboratoires effectuant des analyses dans le domaine de l'eau et des milieux aquatiques au titre du code de l'environnement 
+
+La valeur "1" indique" que l'interlocuteur est agréé tandis que la valeur "0" indique qu'il ne l'est pas.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:IndicatorType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CdCommemoratif">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code du commémoratif</xsd:documentation>
+			<xsd:documentation source="Definition">Le code du commémoratif est un groupe de caractères alphanumériques qui lui est associé à des fins d'identification.
+Si besoin, le SANDRE peut fédérer la codification de commémoratifs à l'échelle nationale, au travers d’une liste de référence administrée par le SANDRE, ceci pour lever toute ambiguité liée à la multiplicité de codes et la redondance des commémoratifs.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="cct:IdentifierType">
+				<xsd:attribute name="schemeAgencyID" type="xsd:normalizedString" use="optional"/>
+				<xsd:attribute name="schemeID" type="xsd:normalizedString" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LbCommemoratif">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Libellé du commémoratif</xsd:documentation>
+			<xsd:documentation source="Definition">Le libellé du commémoratif correspond à son appellation courante.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="40"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DsCommemoratif">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Descriptif du commémoratif</xsd:documentation>
+			<xsd:documentation source="Definition">Le descriptif d'un commémoratif est une zone textuelle libre qui apporte des précisions sur la définition et le contenu des données métier véhiculées au travers de ce commémoratif.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="ValCommemoratif">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Valeur du commémoratif</xsd:documentation>
+			<xsd:documentation source="Definition">Un commémoratif peut prendre une infinité de valeurs ou bien une valeur comprise dans une liste de choix possible faisant l’objet d’une nomenclature.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CdGroupeParametres">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Code du groupe de paramètres</xsd:documentation>
+			<xsd:documentation source="Definition">Le code du groupe de paramètres est un code sans signifiance employé par le commanditaire pour identifier un ensemble de paramètres à analyser pour lesquels les objectifs poursuivis sont identiques. La codification et le contenu d'un groupe de paramètres relève de la responsabilité du commanditaire.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:IdentifierType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="LbGroupeParametres">
+		<xsd:annotation>
+			<xsd:documentation source="Libelle">
+Libellé du groupe de paramètres</xsd:documentation>
+			<xsd:documentation source="Definition">Le libellé d'un groupe de paramètres est un nom employé pour référencer un ensemble de paramètres à analyser pour lesquels les objectifs poursuivis sont identiques. L'attribution d'un libellé à un groupe de paramètres relève de la responsabilité du comanditaire.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="cct:TextType">
+				<xsd:maxLength value="50"/>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

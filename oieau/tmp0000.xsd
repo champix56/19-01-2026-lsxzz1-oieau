@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 sp1 (x64) (http://www.altova.com) by moreno (OIEAU) -->
+<xs:schema xmlns="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1" xmlns:sa_lab="http://xml.sandre.eaufrance.fr/lab/1.1" xmlns:sa_msg="http://xml.sandre.eaufrance.fr/message/1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sa_par="http://xml.sandre.eaufrance.fr/par/1" xmlns:cct="http://xml.sandre.eaufrance.fr/Composants/1" xmlns:sa_com="http://xml.sandre.eaufrance.fr/com/3" xmlns:sa_int="http://xml.sandre.eaufrance.fr/int/2" targetNamespace="http://xml.sandre.eaufrance.fr/scenario/labo_dest/1.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1">
+	<xs:import namespace="http://xml.sandre.eaufrance.fr/int/2" schemaLocation="http://xml.sandre.eaufrance.fr/int/2/sandre_ref_int.xsd"/>
+	<xs:import namespace="http://xml.sandre.eaufrance.fr/com/3" schemaLocation="../../../com/3/sandre_fmt_xml_com.xsd"/>
+	<xs:import namespace="http://xml.sandre.eaufrance.fr/par/1" schemaLocation="../../../par/1/sandre_ref_par.xsd"/>
+	<xs:import namespace="http://xml.sandre.eaufrance.fr/message/1" schemaLocation="../../../msg/1/message.xsd"/>
+	<xs:import namespace="http://xml.sandre.eaufrance.fr/lab/1.1" schemaLocation="../../../lab/1.1/sandre_fmt_xml_lab.xsd"/>
+	<xs:annotation>
+		<xs:documentation source="Code">LABO_DEST</xs:documentation>
+		<xs:documentation source="Id">urn:sandre:scenario:labo_dest::1.1</xs:documentation>
+		<xs:documentation source="Titre">EDILABO: Envoi de résultats avec demande de prestations au préalable </xs:documentation>
+		<xs:documentation source="Copyright">Sandre; &gt;ONEMA</xs:documentation>
+		<xs:documentation source="Description"/>
+		<xs:documentation source="Contributeur">Sandre; groupe d'experts</xs:documentation>
+		<xs:documentation source="Version">1.1</xs:documentation>
+		<xs:documentation source="Theme">Echanges laboratoires commanditaires</xs:documentation>
+		<xs:documentation source="Couverture">France</xs:documentation>
+		<xs:documentation source="MotCle"/>
+		<xs:documentation source="Lang">fra</xs:documentation>
+		<xs:documentation source="DateCreation">2004-01-01</xs:documentation>
+		<xs:documentation source="DateMAJ">2015-11-20</xs:documentation>
+		<xs:documentation source="DateValidation">2013-05-30</xs:documentation>
+		<xs:documentation source="Evolution">
+Mise au format hhhh:mm:ss de la balide DureePrel au lieu de hh:mm:ss		
+		</xs:documentation>
+		<xs:documentation source="StatutDoc">Validé</xs:documentation>
+	</xs:annotation>
+	<xs:element name="LABO_DEST" abstract="false" nillable="false">
+		<xs:complexType mixed="false">
+			<xs:sequence>
+				<xs:element name="Scenario" nillable="false">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="CodeScenario" nillable="false">
+								<xs:complexType mixed="false">
+									<xs:simpleContent>
+										<xs:restriction base="sa_msg:CodeScenario">
+											<xs:enumeration value="LABO_DEST"/>
+										</xs:restriction>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="VersionScenario" nillable="false">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:restriction base="sa_msg:VersionScenario">
+											<xs:enumeration value="1.1"/>
+										</xs:restriction>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="NomScenario" type="sa_msg:NomScenario" nillable="false"/>
+							<xs:element name="DateCreationFichier" type="sa_msg:DateCreationFichier" nillable="false" minOccurs="0"/>
+							<xs:element name="ReferenceFichierEnvoi" type="sa_msg:ReferenceFichierEnvoi" nillable="false" minOccurs="0"/>
+							<xs:element name="Emetteur" nillable="false">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+										<xs:element name="NomIntervenant" type="sa_int:NomIntervenant" nillable="false" minOccurs="0"/>
+										<xs:element name="Service" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contact" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Destinataire" nillable="false">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+										<xs:element name="NomIntervenant" type="sa_int:NomIntervenant" nillable="false" minOccurs="0"/>
+										<xs:element name="Service" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contact" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Referentiel" type="sa_msg:Referentiel" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Intervenant" nillable="false" maxOccurs="unbounded">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+							<xs:element name="NomIntervenant" type="sa_int:NomIntervenant" nillable="false"/>
+							<xs:element name="MnIntervenant" type="sa_int:MnIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="BpIntervenant" type="sa_int:BpIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="ImmoIntervenant" type="sa_int:ImmoIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="RueIntervenant" type="sa_int:RueIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="LieuIntervenant" type="sa_int:LieuIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="VilleIntervenant" type="sa_int:VilleIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="DepIntervenant" type="sa_int:DepIntervenant" nillable="false" minOccurs="0"/>
+							<xs:element name="CPIntervenant" type="sa_int:CPIntervenant" nillable="false" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="StationPrelevement" nillable="false" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="CdStationPrelevement" type="sa_lab:CdStationPrelevement" nillable="false"/>
+							<xs:element name="LbStationPrelevement" type="sa_lab:LbStationPrelevement" nillable="false"/>
+							<xs:element name="TypeStationPrelevement" type="sa_lab:TypeStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="AdresseStationPrelevement" type="sa_lab:AdresseStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="CoordXStationPrelevement" type="sa_lab:CoordXStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="CoordYStationPrelevement" type="sa_lab:CoordYStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="ProjectStationPrelevement" type="sa_lab:ProjectStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="AltitudeStationPrelevement" type="sa_lab:AltitudeStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="ProjectAltiStationPrelevement" type="sa_lab:ProjectAltiStationPrelevement" nillable="false" minOccurs="0"/>
+							<xs:element name="Commune" nillable="false" minOccurs="0">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdCommune" type="sa_com:CdCommune" nillable="false"/>
+										<xs:element name="LbCommune" type="sa_com:LbCommune" nillable="false" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="LocalPrelevement" nillable="false" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdLocalPrelevement" type="sa_lab:CdLocalPrelevement" nillable="false"/>
+										<xs:element name="LbLocalPrelevement" type="sa_lab:LbLocalPrelevement" nillable="false"/>
+										<xs:element name="TypeLocalPrelevement" type="sa_lab:TypeLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="CoordXLocalPrelevement" type="sa_lab:CoordXLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="CoordYLocalPrelevement" type="sa_lab:CoordYLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="ProjLocalPrelevement" type="sa_lab:ProjLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="AltMinLocalPrelevement" type="sa_lab:AltMinLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="AltMaxLocalPrelevement" type="sa_lab:AltMaxLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="ProjAltiLocalPrelevement" type="sa_lab:ProjAltiLocalPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="Commune" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdCommune" type="sa_com:CdCommune" nillable="false"/>
+													<xs:element name="LbCommune" type="sa_com:LbCommune" nillable="false" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Demande" nillable="false">
+					<xs:complexType mixed="false">
+						<xs:sequence>
+							<xs:element name="CdDemandeCommanditaire" type="sa_lab:CdDemandeCommanditaire" nillable="false" minOccurs="0"/>
+							<xs:element name="Commanditaire" nillable="false">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+										<xs:element name="Service" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contact" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CdDemandePrestataire" type="sa_lab:CdDemandePrestataire" nillable="false" minOccurs="0"/>
+							<xs:element name="Prestataire" nillable="false">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+										<xs:element name="Service" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contact" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TypeDemande" type="sa_lab:TypeDemande" nillable="false"/>
+							<xs:element name="ContexteCodification" nillable="false">
+								<xs:complexType mixed="false">
+									<xs:simpleContent>
+										<xs:restriction base="sa_lab:ContexteCodification"/>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="DateDemande" type="sa_lab:DateDemande" nillable="false" minOccurs="0"/>
+							<xs:element name="LbDemande" type="sa_lab:LbDemande" nillable="false" minOccurs="0"/>
+							<xs:element name="DateDebutApplicationDemande" type="sa_lab:DateDebutApplicationDemande" nillable="false" minOccurs="0"/>
+							<xs:element name="DateFinApplicationDemande" type="sa_lab:DateFinApplicationDemande" nillable="false" minOccurs="0"/>
+							<xs:element name="ReferenceMarche" type="sa_lab:ReferenceMarche" nillable="false" minOccurs="0"/>
+							<xs:element name="CommentairesCommanditaire" type="sa_lab:CommentairesCommanditaire" nillable="false" minOccurs="0"/>
+							<xs:element name="Payeur" nillable="false" minOccurs="0">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+										<xs:element name="Service" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contact" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="DestinataireRsAna" nillable="false" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+										<xs:element name="Service" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Contact" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Prelevement" nillable="false" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdPrelevement" type="sa_lab:CdPrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="NumeroOrdrePrelevement" type="sa_lab:NumeroOrdrePrelevement" nillable="false" minOccurs="0"/>
+										<xs:element name="RealisePrel" type="sa_lab:RealisePrel"/>
+										<xs:element name="ReferencePrel" type="sa_lab:ReferencePrel" nillable="false" minOccurs="0"/>
+										<xs:element name="DatePrel" type="sa_lab:DatePrel" nillable="false"/>
+										<xs:element name="HeurePrel" type="sa_lab:HeurePrel" nillable="false" minOccurs="0"/>
+										<xs:element name="DureePrel" type="sa_lab:DureePrel" nillable="false" minOccurs="0"/>
+										<xs:element name="ConformitePrel" type="sa_lab:ConformitePrel" nillable="false" minOccurs="0"/>
+										<xs:element name="FinalitePrel" type="sa_lab:FinalitePrel" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="AccredPrel" type="sa_lab:AccredPrel" nillable="false"/>
+										<xs:element name="AgrePrel" type="sa_lab:AgrePrel" minOccurs="0"/>
+										<xs:element name="PrelSousReserve" type="sa_lab:PrelSousReserve" nillable="false" minOccurs="0"/>
+										<xs:element name="CommentairesPrel" type="sa_lab:CommentairesPrel" nillable="false" minOccurs="0"/>
+										<xs:element name="RisqueProduit" type="sa_lab:RisqueProduit" nillable="false" minOccurs="0"/>
+										<xs:element name="StationPrelevement" nillable="false">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdStationPrelevement" type="sa_lab:CdStationPrelevement" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="LocalPrelevement" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdLocalPrelevement" type="sa_lab:CdLocalPrelevement" nillable="false"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="LocalExactePrel" type="sa_lab:LocalExactePrel" nillable="false" minOccurs="0"/>
+										<xs:element name="ProfondeurPrel" type="sa_lab:ProfondeurPrel" minOccurs="0"/>
+										<xs:element name="ZoneVerticaleProspectee" type="sa_lab:ZoneVerticaleProspectee" minOccurs="0"/>
+										<xs:element name="CoordXPrel" type="sa_lab:CoordXPrel" minOccurs="0"/>
+										<xs:element name="CoordYPrel" type="sa_lab:CoordYPrel" minOccurs="0"/>
+										<xs:element name="ProjectPrel" type="sa_lab:ProjectPrel" minOccurs="0"/>
+										<xs:element name="Support" nillable="false">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdSupport" type="sa_par:CdSupport" nillable="false"/>
+													<xs:element name="LbSupport" nillable="false" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="MethodePrel" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdMethode" type="sa_par:CdMethode" nillable="false"/>
+													<xs:element name="NomMethode" type="sa_par:NomMethode" nillable="false" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NatureProduit" type="sa_lab:NatureProduit" nillable="false" minOccurs="0"/>
+										<xs:element name="UsageProduit" type="sa_lab:UsageProduit" nillable="false" minOccurs="0"/>
+										<xs:element name="NormeProduit" type="sa_lab:NormeProduit" nillable="false" minOccurs="0"/>
+										<xs:element name="Preleveur" nillable="false">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+													<xs:element name="Service" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Contact" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Payeur" nillable="false" minOccurs="0">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+													<xs:element name="Service" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Contact" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="MesureEnvironnementale" nillable="false" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="RsParEnv" type="sa_lab:RsParEnv" nillable="false"/>
+													<xs:element name="RqParEnv"/>
+													<xs:element name="DateParEnv" type="sa_lab:DateParEnv" nillable="false" minOccurs="0"/>
+													<xs:element name="ComParEnv" nillable="false" minOccurs="0"/>
+													<xs:element name="Parametre" nillable="false">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdParametre" type="sa_par:CdParametre" nillable="false"/>
+																<xs:element name="NomParametre" type="sa_par:NomParametre" nillable="false" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Methode" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdMethode" type="sa_par:CdMethode" nillable="false"/>
+																<xs:element name="NomMethode" type="sa_par:NomMethode" nillable="false" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="UniteReference" nillable="false">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdUniteReference" nillable="false"/>
+																<xs:element name="LbUniteReference" type="sa_par:LbUniteReference" nillable="false" minOccurs="0"/>
+																<xs:element name="SymUniteReference" type="sa_par:SymUniteReference" nillable="false" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Echantillon" nillable="false" maxOccurs="unbounded">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="RefEchantillonCommanditaire" nillable="false" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:restriction base="sa_lab:RefEchantillonCommanditaire"/>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="RefEchantillonPrel" type="sa_lab:RefEchantillonPrel" nillable="false" minOccurs="0"/>
+													<xs:element name="RefEchantillonLabo" type="sa_lab:RefEchantillonLabo" nillable="false" minOccurs="0"/>
+													<xs:element name="AcceptabiliteEchant" type="sa_lab:AcceptabiliteEchant" nillable="false" minOccurs="0"/>
+													<xs:element name="DateReceptionEchant" type="sa_lab:DateReceptionEchant" nillable="false" minOccurs="0"/>
+													<xs:element name="HeureReceptionEchant" type="sa_lab:HeureReceptionEchant" nillable="false" minOccurs="0"/>
+													<xs:element name="CommentairesEchant" type="sa_lab:CommentairesEchant" nillable="false" minOccurs="0"/>
+													<xs:element name="Laboratoire" nillable="false">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+																<xs:element name="Service" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Contact" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Payeur" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+																<xs:element name="Service" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Contact" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="MethodeTransport" nillable="false" minOccurs="0">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdMethode" type="sa_par:CdMethode" nillable="false"/>
+																<xs:element name="NomMethode" type="sa_par:NomMethode" nillable="false" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="CompletEchant" type="sa_lab:CompletEchant" nillable="false"/>
+													<xs:element name="Analyse" nillable="false" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="RefLaboAna" type="sa_lab:RefLaboAna" minOccurs="0"/>
+																<xs:element name="DateAna" type="sa_lab:DateAna" nillable="false" minOccurs="0"/>
+																<xs:element name="HeureAna" type="sa_lab:HeureAna" nillable="false" minOccurs="0"/>
+																<xs:element name="RsAna" nillable="false">
+																	<xs:complexType mixed="false">
+																		<xs:simpleContent>
+																			<xs:restriction base="sa_lab:RsAna"/>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="RqAna" type="sa_lab:RqAna" nillable="false"/>
+																<xs:element name="LDAna" type="sa_lab:LDAna" nillable="false" minOccurs="0"/>
+																<xs:element name="LQAna" type="sa_lab:LQAna" nillable="false" minOccurs="0"/>
+																<xs:element name="LSAna" type="sa_lab:LSAna" nillable="false" minOccurs="0"/>
+																<xs:element name="AccreAna" type="sa_lab:AccreAna" nillable="false" minOccurs="0"/>
+																<xs:element name="AgreAna" type="sa_lab:AgreAna" minOccurs="0"/>
+																<xs:element name="ConfirAna" type="sa_lab:ConfirAna" nillable="false" minOccurs="0"/>
+																<xs:element name="ReserveAna" type="sa_lab:ReserveAna" nillable="false" minOccurs="0"/>
+																<xs:element name="IncertAna" type="sa_lab:IncertAna" nillable="false" minOccurs="0"/>
+																<xs:element name="IncertTypeAna" type="sa_lab:IncertTypeAna" minOccurs="0"/>
+																<xs:element name="IncertElarAna" type="sa_lab:IncertElarAna" minOccurs="0"/>
+																<xs:element name="RefAna" type="sa_lab:RefAna" nillable="false" minOccurs="0"/>
+																<xs:element name="InsituAna" type="sa_lab:InsituAna" nillable="false"/>
+																<xs:element name="RdtExtraction" type="sa_lab:RdtExtraction" nillable="false" minOccurs="0"/>
+																<xs:element name="CommentairesAna" type="sa_lab:CommentairesAna" nillable="false" minOccurs="0"/>
+																<xs:element name="Parametre" nillable="false">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdParametre" type="sa_par:CdParametre" nillable="false"/>
+																			<xs:element name="NomParametre" type="sa_par:NomParametre" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="FractionAnalysee" nillable="false">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdFractionAnalysee" type="sa_par:CdFractionAnalysee" nillable="false"/>
+																			<xs:element name="LbFractionAnalysee" type="sa_par:LbFractionAnalysee" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Methode" nillable="false">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdMethode" type="sa_par:CdMethode" nillable="false"/>
+																			<xs:element name="NomMethode" type="sa_par:NomMethode" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="UniteReference" nillable="false">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdUniteReference" type="sa_par:CdUniteReference" nillable="false"/>
+																			<xs:element name="LbUniteReference" type="sa_par:LbUniteReference" nillable="false" minOccurs="0"/>
+																			<xs:element name="SymUniteReference" type="sa_par:SymUniteReference" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Laboratoire" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+																			<xs:element name="Service" nillable="false" minOccurs="0">
+																				<xs:complexType mixed="false">
+																					<xs:sequence>
+																						<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="Contact" nillable="false" minOccurs="0">
+																				<xs:complexType mixed="false">
+																					<xs:sequence>
+																						<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Payeur" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdIntervenant" type="sa_int:CdIntervenant" nillable="false"/>
+																			<xs:element name="Service" nillable="false" minOccurs="0">
+																				<xs:complexType mixed="false">
+																					<xs:sequence>
+																						<xs:element name="NomService" type="sa_int:NomService" nillable="false"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="Contact" nillable="false" minOccurs="0">
+																				<xs:complexType mixed="false">
+																					<xs:sequence>
+																						<xs:element name="NomContact" type="sa_int:NomContact" nillable="false"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="MethFractionnement" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdMethode" type="sa_par:CdMethode" nillable="false"/>
+																			<xs:element name="NomMethode" type="sa_par:NomMethode" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="MethExtraction" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdMethode" type="sa_par:CdMethode" nillable="false"/>
+																			<xs:element name="NomMethode" type="sa_par:NomMethode" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Solvant" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdParametre" type="sa_par:CdParametre" nillable="false"/>
+																			<xs:element name="NomParametre" type="sa_par:NomParametre" nillable="false" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="VolumeFiltre" type="sa_lab:VolumeFiltre" nillable="false" minOccurs="0"/>
+																<xs:element name="GroupeParametres" nillable="false" minOccurs="0">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdGroupeParametres" type="sa_lab:CdGroupeParametres" nillable="false"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Commemoratif" nillable="false" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType mixed="false">
+																		<xs:sequence>
+																			<xs:element name="CdCommemoratif" type="sa_lab:CdCommemoratif" nillable="false"/>
+																			<xs:element name="LbCommemoratif" type="sa_lab:LbCommemoratif" nillable="false" minOccurs="0"/>
+																			<xs:element name="DsCommemoratif" type="sa_lab:DsCommemoratif" nillable="false" minOccurs="0"/>
+																			<xs:element name="ValCommemoratif" type="sa_lab:ValCommemoratif" nillable="false" maxOccurs="unbounded"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Commemoratif" nillable="false" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType mixed="false">
+															<xs:sequence>
+																<xs:element name="CdCommemoratif" type="sa_lab:CdCommemoratif" nillable="false"/>
+																<xs:element name="LbCommemoratif" type="sa_lab:LbCommemoratif" nillable="false" minOccurs="0"/>
+																<xs:element name="DsCommemoratif" type="sa_lab:DsCommemoratif" nillable="false" minOccurs="0"/>
+																<xs:element name="ValCommemoratif" type="sa_lab:ValCommemoratif" nillable="false" maxOccurs="unbounded"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Commemoratif" nillable="false" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType mixed="false">
+												<xs:sequence>
+													<xs:element name="CdCommemoratif" type="sa_lab:CdCommemoratif" nillable="false"/>
+													<xs:element name="LbCommemoratif" type="sa_lab:LbCommemoratif" nillable="false" minOccurs="0"/>
+													<xs:element name="DsCommemoratif" type="sa_lab:DsCommemoratif" nillable="false" minOccurs="0"/>
+													<xs:element name="ValCommemoratif" type="sa_lab:ValCommemoratif" nillable="false" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Commemoratif" nillable="false" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType mixed="false">
+									<xs:sequence>
+										<xs:element name="CdCommemoratif" type="sa_lab:CdCommemoratif" nillable="false"/>
+										<xs:element name="LbCommemoratif" type="sa_lab:LbCommemoratif" nillable="false" minOccurs="0"/>
+										<xs:element name="DsCommemoratif" type="sa_lab:DsCommemoratif" nillable="false" minOccurs="0"/>
+										<xs:element name="ValCommemoratif" type="sa_lab:ValCommemoratif" nillable="false" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
